@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/constants/constants.dart';
 
+// ignore: must_be_immutable
 class TextComponent extends StatelessWidget {
   String title;
   double fontSize;
@@ -17,7 +18,7 @@ class TextComponent extends StatelessWidget {
         textStyle: TextStyle(
           color: HexColor(textColor),
           fontSize: fontSize,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w900,
         ),
       ),
     );

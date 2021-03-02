@@ -105,6 +105,8 @@ class ListViewComponent extends StatelessWidget {
                           textColor: "000000",
                           borderColor: "000000",
                           borderWidth: 3,
+                          provider: null,
+                          route: null,
                         ),
                         SizedBox(
                           height: 10,

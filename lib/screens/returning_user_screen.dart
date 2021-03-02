@@ -6,6 +6,7 @@ import 'package:munch_app/providers/ui_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:munch_app/components/list_view_component.dart';
 
+// ignore: must_be_immutable
 class ReturningUser extends StatelessWidget {
   Color pink = HexColor("F26882");
 
@@ -42,8 +43,7 @@ class ReturningUser extends StatelessWidget {
                     'We knew that you gonna love Munch products, welcome again!\nPick your previously saved locations or add a new one.',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.openSans(
-                      textStyle:
-                          TextStyle(color: Colors.white, fontSize: 11.5),
+                      textStyle: TextStyle(color: Colors.white, fontSize: 11.5),
                     ),
                   ),
                   SizedBox(
@@ -62,6 +62,7 @@ class ReturningUser extends StatelessWidget {
                         borderColor: "FFFFFF",
                         borderWidth: 2,
                         provider: provider,
+                        route: null,
                       ),
                       SizedBox(
                         width: 10,
@@ -75,6 +76,8 @@ class ReturningUser extends StatelessWidget {
                         textColor: "FFFFFF",
                         borderColor: "FFFFFF",
                         borderWidth: 2,
+                        provider: null,
+                        route: null,
                       ),
                       SizedBox(
                         width: 10,
@@ -88,6 +91,8 @@ class ReturningUser extends StatelessWidget {
                         textColor: "FFFFFF",
                         borderColor: "FFFFFF",
                         borderWidth: 2,
+                        provider: null,
+                        route: null,
                       ),
                     ],
                   ),
@@ -106,6 +111,7 @@ class ReturningUser extends StatelessWidget {
                         borderColor: "FFFFFF",
                         borderWidth: 2,
                         route: "/main-screen",
+                        provider: null,
                       ),
                     ],
                   ),

@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:munch_app/providers/ui_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:munch_app/components/list_view_component.dart';
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   Color pink = HexColor("F26882");
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<UiProvider>(context);
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
       child: SingleChildScrollView(
@@ -63,7 +61,7 @@ class MainScreen extends StatelessWidget {
                           borderColor: "FFFFFF",
                           borderWidth: 2,
                           provider: null,
-                          route: "/main-screen-when",
+                          route: "/map-location",
                         ),
                       ],
                     ),
@@ -82,6 +80,8 @@ class MainScreen extends StatelessWidget {
                           textColor: "FFFFFF",
                           borderColor: "FFFFFF",
                           borderWidth: 2,
+                          provider: null,
+                          route: null,
                         ),
                       ],
                     ),

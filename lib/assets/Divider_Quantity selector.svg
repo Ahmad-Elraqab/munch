@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="1" viewBox="0 0 200 1"><defs><style>.a{fill:none;stroke:#c4c4c4;}</style></defs><g transform="translate(-38.5 -154)"><line class="a" x1="75" transform="translate(38.5 154.5)"/><line class="a" x1="75" transform="translate(163.5 154.5)"/></g></svg>
+<svg height="1" viewBox="0 0 200 1" width="200" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#c4c4c4"><path d="m75 .5h-75"/><path d="m200 .5h-75"/></g></svg>

@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
-import 'package:munch_app/screens/returning_user.dart';
+import 'package:munch_app/screens/login_screen.dart';
+import 'package:munch_app/screens/map_location.dart';
+import 'package:munch_app/screens/returning_user_screen.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/screens/main_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/screens/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
 
+import '../constants/routes.dart';
+
+// ignore: must_be_immutable
 class App extends StatefulWidget {
   String currentIndex;
-  App({this.currentIndex = "/"});
+  App({this.currentIndex = mLandingScreen});
   @override
   _AppState createState() => _AppState();
 }
 
 class _AppState extends State<App> {
+  // ignore: unused_element
   _onItemTapped(index) {
     setState(() {
       widget.currentIndex = index;
@@ -26,11 +32,11 @@ class _AppState extends State<App> {
   // ignore: missing_return
   Widget callPage(index) {
     switch (index) {
-      case mUserReturn:
+      case mLandingScreen:
         return ReturningUser();
         break;
       case "0":
-        return Container();
+        return ReturningUser();
         break;
       case "1":
         return Container();
@@ -41,7 +47,7 @@ class _AppState extends State<App> {
       case "3":
         return Container();
         break;
-      case mLandingScreen:
+      case mUserReturn:
         return ReturningUser();
         break;
       case mMainScreenWhen:
@@ -49,6 +55,12 @@ class _AppState extends State<App> {
         break;
       case mMainScreen:
         return MainScreen();
+        break;
+      case mLoginScreen:
+        return Login();
+        break;
+      case mMaps:
+        return MapLocation();
         break;
     }
   }
@@ -147,6 +159,8 @@ class _AppState extends State<App> {
                   textColor: "000000",
                   title: "Change to Arabic",
                   fontWieght: "bold",
+                  provider: null,
+                  route: null,
                 ),
                 SizedBox(
                   width: 50,

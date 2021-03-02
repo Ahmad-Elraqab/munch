@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/app.dart';
 
+// ignore: must_be_immutable
 class RaisedButtonCom extends StatefulWidget {
   String title;
   double radius;
