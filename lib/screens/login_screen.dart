@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:munch_app/components/app.dart';
 import 'package:munch_app/components/text_field_component.dart';
+import 'package:munch_app/constants/routes.dart';
+import 'package:munch_app/screens/registeration_screen.dart';
 import '../components/raised_button_component.dart';
 import '../components/text_component.dart';
 
@@ -33,32 +36,46 @@ class _LoginState extends State<Login> {
                   ),
                   Row(
                     children: [
-                      RaisedButtonCom(
-                        title: "Login",
-                        color: "66CDAA",
-                        fontSize: 18,
-                        padding: 14,
-                        radius: 10,
-                        textColor: "FFFFFF",
-                        borderColor: "66CDAA",
-                        borderWidth: 2,
-                        provider: null,
-                        route: null,
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {},
+                          child: RaisedButtonCom(
+                            title: "Login",
+                            color: "66CDAA",
+                            fontSize: 18,
+                            padding: 14,
+                            radius: 10,
+                            textColor: "FFFFFF",
+                            borderColor: "66CDAA",
+                            borderWidth: 2,
+                          ),
+                        ),
                       ),
                       SizedBox(
                         width: 30,
                       ),
-                      RaisedButtonCom(
-                        title: "Register",
-                        color: "FFFFFF",
-                        fontSize: 18,
-                        padding: 14,
-                        radius: 10,
-                        textColor: "000000",
-                        borderColor: "000000",
-                        borderWidth: 2,
-                        provider: null,
-                        route: null,
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (_, __, ___) => SignUp(),
+                                transitionDuration: Duration(seconds: 0),
+                              ),
+                            )
+                          },
+                          child: RaisedButtonCom(
+                            title: "Register",
+                            color: "FFFFFF",
+                            fontSize: 18,
+                            padding: 14,
+                            radius: 10,
+                            textColor: "000000",
+                            borderColor: "000000",
+                            borderWidth: 2,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -130,17 +147,22 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         width: width * 0.1,
                       ),
-                      RaisedButtonCom(
-                        title: "Login",
-                        color: "F26882",
-                        fontSize: 18,
-                        padding: 20,
-                        radius: 30,
-                        textColor: "FFFFFF",
-                        borderColor: "F26882",
-                        borderWidth: 2,
-                        provider: null,
-                        route: null,
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {
+                            Navigator.pushReplacementNamed(context, mUserReturn)
+                          },
+                          child: RaisedButtonCom(
+                            title: "Login",
+                            color: "F26882",
+                            fontSize: 18,
+                            padding: 20,
+                            radius: 30,
+                            textColor: "FFFFFF",
+                            borderColor: "F26882",
+                            borderWidth: 2,
+                          ),
+                        ),
                       ),
                       SizedBox(
                         width: width * 0.1,

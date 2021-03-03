@@ -10,7 +10,6 @@ import 'package:munch_app/screens/main_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/screens/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
-
 import '../constants/routes.dart';
 
 // ignore: must_be_immutable
@@ -102,7 +101,7 @@ class _AppState extends State<App> {
   Drawer buildDrawer(BuildContext context) {
     return Drawer(
       child: Container(
-        height: MediaQuery.of(context).size.height,
+        // height: MediaQuery.of(context).size.height,
         child: ListView(
           children: [
             DrawerHeader(
@@ -135,10 +134,8 @@ class _AppState extends State<App> {
               title: TextComponent(
                   title: "Contanct Us", fontSize: 18, textColor: "000000"),
             ),
-            Expanded(
-              child: SizedBox(
-                height: 10,
-              ),
+            SizedBox(
+              height: 30,
             ),
             ListTile(
               title: TextComponent(
@@ -149,18 +146,22 @@ class _AppState extends State<App> {
                 SizedBox(
                   width: 50,
                 ),
-                RaisedButtonCom(
-                  borderColor: "000000",
-                  borderWidth: 2,
-                  color: "FFFFFF",
-                  fontSize: 12,
-                  padding: 0,
-                  radius: 10,
-                  textColor: "000000",
-                  title: "Change to Arabic",
-                  fontWieght: "bold",
-                  provider: null,
-                  route: null,
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () =>
+                        {Navigator.pushReplacementNamed(context, mLoginScreen)},
+                    child: RaisedButtonCom(
+                      borderColor: "000000",
+                      borderWidth: 2,
+                      color: "FFFFFF",
+                      fontSize: 14,
+                      padding: 10,
+                      radius: 10,
+                      textColor: "000000",
+                      title: "Change to Arabic",
+                      fontWieght: "bold",
+                    ),
+                  ),
                 ),
                 SizedBox(
                   width: 50,

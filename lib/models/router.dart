@@ -12,10 +12,9 @@ class RouterPage {
     WidgetBuilder builder;
 
     switch (settings.name) {
-
-      // case "/":
-      //   builder = (BuildContext context) => SignUp();
-      //   break;
+      case "/":
+        builder = (BuildContext context) => Login();
+        break;
       case mLoginScreen:
         builder = (BuildContext context) => Login();
         break;

@@ -96,17 +96,20 @@ class ListViewComponent extends StatelessWidget {
                         SizedBox(
                           height: 5,
                         ),
-                        RaisedButtonCom(
-                          title: "Buy Now",
-                          color: "FFFFFF",
-                          fontSize: 13,
-                          padding: 8,
-                          radius: 10,
-                          textColor: "000000",
-                          borderColor: "000000",
-                          borderWidth: 3,
-                          provider: null,
-                          route: null,
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => {},
+                            child: RaisedButtonCom(
+                              title: "Buy Now",
+                              color: "FFFFFF",
+                              fontSize: 13,
+                              padding: 8,
+                              radius: 10,
+                              textColor: "000000",
+                              borderColor: "000000",
+                              borderWidth: 3,
+                            ),
+                          ),
                         ),
                         SizedBox(
                           height: 10,

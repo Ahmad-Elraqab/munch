@@ -51,17 +51,20 @@ class MainScreenWhen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        RaisedButtonCom(
-                          title: "I want it now",
-                          color: "F26882",
-                          fontSize: 14,
-                          padding: 8,
-                          radius: 10,
-                          textColor: "FFFFFF",
-                          borderColor: "FFFFFF",
-                          borderWidth: 2,
-                          provider: null,
-                          route: null,
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => {},
+                            child: RaisedButtonCom(
+                              title: "I want it now",
+                              color: "F26882",
+                              fontSize: 14,
+                              padding: 10,
+                              radius: 10,
+                              textColor: "FFFFFF",
+                              borderColor: "FFFFFF",
+                              borderWidth: 2,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -71,17 +74,20 @@ class MainScreenWhen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        RaisedButtonCom(
-                          title: "I want reservation",
-                          color: "F26882",
-                          fontSize: 14,
-                          padding: 8,
-                          radius: 10,
-                          textColor: "FFFFFF",
-                          borderColor: "FFFFFF",
-                          borderWidth: 2,
-                          provider: null,
-                          route: null,
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => {},
+                            child: RaisedButtonCom(
+                              title: "I want reservation",
+                              color: "F26882",
+                              fontSize: 14,
+                              padding: 10,
+                              radius: 10,
+                              textColor: "FFFFFF",
+                              borderColor: "FFFFFF",
+                              borderWidth: 2,
+                            ),
+                          ),
                         ),
                       ],
                     ),

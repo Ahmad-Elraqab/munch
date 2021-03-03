@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/router.dart';
-import 'package:munch_app/providers/ui_provider.dart';
+import 'package:munch_app/providers/user_provider.dart';
 
 class AppView extends StatefulWidget {
   @override

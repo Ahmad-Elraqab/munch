@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/constants/constants.dart';
-import 'package:munch_app/components/app.dart';
 
 // ignore: must_be_immutable
 class RaisedButtonCom extends StatefulWidget {
@@ -13,8 +13,6 @@ class RaisedButtonCom extends StatefulWidget {
   String borderColor;
   double borderWidth;
   String fontWieght;
-  String route;
-  dynamic provider;
 
   RaisedButtonCom({
     this.title,
@@ -26,8 +24,6 @@ class RaisedButtonCom extends StatefulWidget {
     this.borderColor,
     this.borderWidth,
     this.fontWieght,
-    this.provider,
-    this.route,
   });
 
   @override
@@ -37,29 +33,18 @@ class RaisedButtonCom extends StatefulWidget {
 class _RaisedButtonComState extends State<RaisedButtonCom> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: RaisedButton(
-        onPressed: () => widget.provider == null
-            ? Navigator.push(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => App(currentIndex: widget.route),
-                  transitionDuration: Duration(seconds: 0),
-                ))
-            : widget.provider.onTap(),
-        textColor: HexColor(widget.textColor),
+    return Container(
+      padding: EdgeInsets.all(widget.padding),
+      decoration: BoxDecoration(
         color: HexColor(widget.color),
-        hoverColor: Colors.pink,
-        splashColor: Colors.pink,
-        padding: EdgeInsets.all(widget.padding),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(widget.radius),
-          side: BorderSide(
-              color: HexColor(widget.borderColor), width: widget.borderWidth),
-        ),
-        child: Text(widget.title,
-            style: TextStyle(
-                fontSize: widget.fontSize, fontWeight: FontWeight.bold)),
+        borderRadius: BorderRadius.circular(widget.radius),
+        border: Border.all(
+            color: HexColor(widget.borderColor), width: widget.borderWidth),
+      ),
+      child: TextComponent(
+        fontSize: widget.fontSize,
+        textColor: widget.textColor,
+        title: widget.title,
       ),
     );
   }

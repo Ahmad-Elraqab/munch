@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:munch_app/components/app.dart';
+import 'package:munch_app/components/show_dialog_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/components/list_view_component.dart';
+import 'package:munch_app/constants/routes.dart';
 
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
@@ -51,17 +54,29 @@ class MainScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        RaisedButtonCom(
-                          title: "Locate me",
-                          color: "F26882",
-                          fontSize: 12,
-                          padding: 8,
-                          radius: 10,
-                          textColor: "FFFFFF",
-                          borderColor: "FFFFFF",
-                          borderWidth: 2,
-                          provider: null,
-                          route: "/map-location",
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder: (_, __, ___) =>
+                                      App(currentIndex: "/map-location"),
+                                  transitionDuration: Duration(seconds: 0),
+                                ),
+                              )
+                            },
+                            child: RaisedButtonCom(
+                              title: "Locate me",
+                              color: "F26882",
+                              fontSize: 14,
+                              padding: 10,
+                              radius: 10,
+                              textColor: "FFFFFF",
+                              borderColor: "FFFFFF",
+                              borderWidth: 2,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -71,17 +86,20 @@ class MainScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        RaisedButtonCom(
-                          title: "Choose city",
-                          color: "F26882",
-                          fontSize: 12,
-                          padding: 8,
-                          radius: 10,
-                          textColor: "FFFFFF",
-                          borderColor: "FFFFFF",
-                          borderWidth: 2,
-                          provider: null,
-                          route: null,
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => {ShowDialog()},
+                            child: RaisedButtonCom(
+                              title: "Choose city",
+                              color: "F26882",
+                              fontSize: 14,
+                              padding: 10,
+                              radius: 10,
+                              textColor: "FFFFFF",
+                              borderColor: "FFFFFF",
+                              borderWidth: 2,
+                            ),
+                          ),
                         ),
                       ],
                     ),

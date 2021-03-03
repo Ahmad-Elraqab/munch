@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:munch_app/components/app.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:munch_app/providers/ui_provider.dart';
+import 'package:munch_app/constants/routes.dart';
+import 'package:munch_app/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:munch_app/components/list_view_component.dart';
 
@@ -52,66 +54,90 @@ class ReturningUser extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      RaisedButtonCom(
-                        title: provider.title,
-                        color: "F26882",
-                        fontSize: 12,
-                        padding: 8,
-                        radius: 10,
-                        textColor: "FFFFFF",
-                        borderColor: "FFFFFF",
-                        borderWidth: 2,
-                        provider: provider,
-                        route: null,
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (_, __, ___) =>
+                                    App(currentIndex: mMainScreenWhen),
+                                transitionDuration: Duration(seconds: 0),
+                              ),
+                            )
+                          },
+                          child: RaisedButtonCom(
+                            title: provider.title,
+                            color: "F26882",
+                            fontSize: 14,
+                            padding: 10,
+                            radius: 10,
+                            textColor: "FFFFFF",
+                            borderColor: "FFFFFF",
+                            borderWidth: 2,
+                          ),
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      RaisedButtonCom(
-                        title: "Work",
-                        color: "F26882",
-                        fontSize: 12,
-                        padding: 8,
-                        radius: 10,
-                        textColor: "FFFFFF",
-                        borderColor: "FFFFFF",
-                        borderWidth: 2,
-                        provider: null,
-                        route: null,
+                      Expanded(
+                        child: RaisedButtonCom(
+                          title: "Work",
+                          color: "F26882",
+                          fontSize: 14,
+                          padding: 10,
+                          radius: 10,
+                          textColor: "FFFFFF",
+                          borderColor: "FFFFFF",
+                          borderWidth: 2,
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      RaisedButtonCom(
-                        title: "Home",
-                        color: "F26882",
-                        fontSize: 12,
-                        padding: 8,
-                        radius: 10,
-                        textColor: "FFFFFF",
-                        borderColor: "FFFFFF",
-                        borderWidth: 2,
-                        provider: null,
-                        route: null,
+                      Expanded(
+                        child: RaisedButtonCom(
+                          title: "Home",
+                          color: "F26882",
+                          fontSize: 14,
+                          padding: 10,
+                          radius: 10,
+                          textColor: "FFFFFF",
+                          borderColor: "FFFFFF",
+                          borderWidth: 2,
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 5,
+                    height: 10,
                   ),
                   Row(
                     children: [
-                      RaisedButtonCom(
-                        title: "Add new location",
-                        color: "F26882",
-                        fontSize: 12,
-                        padding: 8,
-                        radius: 10,
-                        textColor: "FFFFFF",
-                        borderColor: "FFFFFF",
-                        borderWidth: 2,
-                        route: "/main-screen",
-                        provider: null,
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (_, __, ___) =>
+                                    App(currentIndex: mMainScreen),
+                                transitionDuration: Duration(seconds: 0),
+                              ),
+                            )
+                          },
+                          child: RaisedButtonCom(
+                            title: "Add new location",
+                            color: "F26882",
+                            fontSize: 14,
+                            padding: 10,
+                            radius: 10,
+                            textColor: "FFFFFF",
+                            borderColor: "FFFFFF",
+                            borderWidth: 2,
+                          ),
+                        ),
                       ),
                     ],
                   ),
