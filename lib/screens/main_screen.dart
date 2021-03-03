@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:munch_app/components/app.dart';
-import 'package:munch_app/components/show_dialog_component.dart';
+import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +10,7 @@ import 'package:munch_app/constants/routes.dart';
 // ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   Color pink = HexColor("F26882");
-
+  int hold = 0;
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
@@ -88,7 +88,11 @@ class MainScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: GestureDetector(
-                            onTap: () => {ShowDialog()},
+                            onTap: () {
+                              hold = 0;
+                              buildShowDialog(context);
+                              buildShowDialog(context);
+                            },
                             child: RaisedButtonCom(
                               title: "Choose city",
                               color: "F26882",
@@ -111,6 +115,69 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future buildShowDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Container(
+            height: 50,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(width: 1, color: Colors.white),
+              ),
+            ),
+            child: TextComponent(
+              fontSize: 16,
+              textColor: "FFFFFF",
+              title: "Choose your city",
+            ),
+          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          content: Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            width: MediaQuery.of(context).size.height * 0.3,
+            child: ListView.builder(
+              itemBuilder: (context, index) => Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      hold++;
+                      hold == 2
+                          ? Navigator.popAndPushNamed(context, mMainScreenWhen)
+                          : Navigator.pop(context);
+                    },
+                    child: RaisedButtonCom(
+                      borderColor: "00FFFFFF",
+                      color: "00FFFFFF",
+                      fontSize: 16,
+                      borderWidth: 0,
+                      radius: 0,
+                      padding: 16,
+                      textColor: "FFFFFF",
+                      title: "Makkah",
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+                    child: Divider(
+                      thickness: 1,
+                      height: 2,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          backgroundColor: HexColor("F26882"),
+          actions: [],
+        );
+      },
     );
   }
 }

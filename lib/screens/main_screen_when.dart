@@ -3,6 +3,7 @@ import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/components/list_view_component.dart';
+import 'package:munch_app/constants/routes.dart';
 
 // ignore: must_be_immutable
 class MainScreenWhen extends StatelessWidget {
@@ -53,7 +54,8 @@ class MainScreenWhen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: GestureDetector(
-                            onTap: () => {},
+                            onTap: () =>
+                                {Navigator.pushNamed(context, mCategory)},
                             child: RaisedButtonCom(
                               title: "I want it now",
                               color: "F26882",
@@ -76,7 +78,8 @@ class MainScreenWhen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: GestureDetector(
-                            onTap: () => {},
+                            onTap: () =>
+                                {Navigator.pushNamed(context, mCategory)},
                             child: RaisedButtonCom(
                               title: "I want reservation",
                               color: "F26882",

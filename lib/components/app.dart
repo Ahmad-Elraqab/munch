@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
+import 'package:munch_app/screens/category_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
 import 'package:munch_app/screens/returning_user_screen.dart';
@@ -60,6 +61,9 @@ class _AppState extends State<App> {
         break;
       case mMaps:
         return MapLocation();
+        break;
+      case mCategory:
+        return CategoryList();
         break;
     }
   }
