@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:munch_app/app_view.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
+import 'package:munch_app/models/language.dart';
 import 'package:munch_app/screens/category_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
@@ -27,6 +29,25 @@ class _AppState extends State<App> {
     setState(() {
       widget.currentIndex = index;
     });
+  }
+
+  _changeLanguage() {
+    // Navigator.pushReplacementNamed(context, mLoginScreen)
+    print("object");
+
+    Language language = Language(2, 'Arabic', '', 'ar');
+    Locale _temp;
+    switch (language.languageCode) {
+      case 'en':
+        _temp = Locale(language.languageCode, 'US');
+        break;
+      case 'ar':
+        _temp = Locale(language.languageCode, 'SA');
+        break;
+      default:
+    }
+
+    AppView.setLocale(context, _temp);
   }
 
   // ignore: missing_return
@@ -141,9 +162,13 @@ class _AppState extends State<App> {
             SizedBox(
               height: 30,
             ),
-            ListTile(
-              title: TextComponent(
-                  title: "Logout", fontSize: 18, textColor: "000000"),
+            GestureDetector(
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, mLoginScreen),
+              child: ListTile(
+                title: TextComponent(
+                    title: "Logout", fontSize: 18, textColor: "000000"),
+              ),
             ),
             Row(
               children: [
@@ -152,8 +177,7 @@ class _AppState extends State<App> {
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () =>
-                        {Navigator.pushReplacementNamed(context, mLoginScreen)},
+                    onTap: () => _changeLanguage,
                     child: RaisedButtonCom(
                       borderColor: "000000",
                       borderWidth: 2,

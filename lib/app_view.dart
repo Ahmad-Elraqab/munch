@@ -1,15 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:munch_app/localization/demo_localization.dart';
 import 'package:provider/provider.dart';
 import 'models/router.dart';
 import 'package:munch_app/providers/user_provider.dart';
 
 class AppView extends StatefulWidget {
+  static void setLocale(BuildContext context, Locale locale) {
+    _AppViewState state = context.findAncestorStateOfType<_AppViewState>();
+    state.setLocale(locale);
+  }
+
   @override
   _AppViewState createState() => _AppViewState();
 }
 
 class _AppViewState extends State<AppView> {
+  Locale _locale;
+
+  void setLocale(Locale locale) {
+    _locale = locale;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -19,6 +33,29 @@ class _AppViewState extends State<AppView> {
         ),
       ],
       child: MaterialApp(
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('ar', 'SA'),
+        ],
+        localizationsDelegates: [
+          DemoLocalization.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        localeListResolutionCallback: (deviceLocale, supportedLocales) {
+          for (var locale in supportedLocales) {
+            for (var d in deviceLocale) {
+              if (locale.languageCode == d.languageCode &&
+                  locale.countryCode == d.countryCode) {
+                return d;
+              }
+            }
+          }
+
+          return supportedLocales.first;
+        },
+        locale: _locale,
         theme: ThemeData(
           primaryColor: Colors.pink,
           accentColor: Colors.pink,

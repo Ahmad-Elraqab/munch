@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/components/app.dart';
 import 'package:munch_app/components/text_field_component.dart';
+import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/constants/routes.dart';
 import 'package:munch_app/screens/registeration_screen.dart';
 import '../components/raised_button_component.dart';
@@ -40,7 +41,7 @@ class _LoginState extends State<Login> {
                         child: GestureDetector(
                           onTap: () => {},
                           child: RaisedButtonCom(
-                            title: "Login",
+                            title: getTranslated(context, "login"),
                             color: "66CDAA",
                             fontSize: 18,
                             padding: 14,
