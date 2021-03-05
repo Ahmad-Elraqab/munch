@@ -4,8 +4,6 @@ import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/constants/routes.dart';
-import 'package:munch_app/providers/user_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:munch_app/components/list_view_component.dart';
 
 // ignore: must_be_immutable
@@ -14,7 +12,6 @@ class ReturningUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<UiProvider>(context);
     return SingleChildScrollView(
       child: Container(
         color: Colors.white,
@@ -30,7 +27,7 @@ class ReturningUser extends StatelessWidget {
                     height: 40,
                   ),
                   Text(
-                    'Already back?',
+                    getTranslated(context, "welcomeBack"),
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
                       color: Colors.white,
@@ -39,17 +36,7 @@ class ReturningUser extends StatelessWidget {
                     )),
                   ),
                   SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'We knew that you gonna love Munch products, welcome again!\nPick your previously saved locations or add a new one.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.openSans(
-                      textStyle: TextStyle(color: Colors.white, fontSize: 11.5),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -67,7 +54,7 @@ class ReturningUser extends StatelessWidget {
                             )
                           },
                           child: RaisedButtonCom(
-                            title: provider.title,
+                            title: "Office",
                             color: "F26882",
                             fontSize: 14,
                             padding: 10,
@@ -128,7 +115,8 @@ class ReturningUser extends StatelessWidget {
                             )
                           },
                           child: RaisedButtonCom(
-                            title: "Add new location",
+                            title: getTranslated(
+                                context, "mainPageAddNewAddressButton"),
                             color: "F26882",
                             fontSize: 14,
                             padding: 10,

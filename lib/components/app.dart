@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:munch_app/app_view.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
-import 'package:munch_app/models/language.dart';
+import 'package:munch_app/providers/user_provider.dart';
 import 'package:munch_app/screens/category_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
@@ -13,6 +12,7 @@ import 'package:munch_app/screens/main_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/screens/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
+import 'package:provider/provider.dart';
 import '../constants/routes.dart';
 
 // ignore: must_be_immutable
@@ -29,25 +29,6 @@ class _AppState extends State<App> {
     setState(() {
       widget.currentIndex = index;
     });
-  }
-
-  _changeLanguage() {
-    // Navigator.pushReplacementNamed(context, mLoginScreen)
-    print("object");
-
-    Language language = Language(2, 'Arabic', '', 'ar');
-    Locale _temp;
-    switch (language.languageCode) {
-      case 'en':
-        _temp = Locale(language.languageCode, 'US');
-        break;
-      case 'ar':
-        _temp = Locale(language.languageCode, 'SA');
-        break;
-      default:
-    }
-
-    AppView.setLocale(context, _temp);
   }
 
   // ignore: missing_return
@@ -124,6 +105,7 @@ class _AppState extends State<App> {
   }
 
   Drawer buildDrawer(BuildContext context) {
+    Provider.of<UiProvider>(context).context = context;
     return Drawer(
       child: Container(
         // height: MediaQuery.of(context).size.height,
@@ -141,23 +123,33 @@ class _AppState extends State<App> {
             ),
             ListTile(
               title: TextComponent(
-                  title: "My Account", fontSize: 18, textColor: "000000"),
+                  title: getTranslated(context, "DrawerMyAccount"),
+                  fontSize: 18,
+                  textColor: "000000"),
             ),
             ListTile(
               title: TextComponent(
-                  title: "My Addresses", fontSize: 18, textColor: "000000"),
+                  title: getTranslated(context, "DrawerMyAddresses"),
+                  fontSize: 18,
+                  textColor: "000000"),
             ),
             ListTile(
               title: TextComponent(
-                  title: "Store Location", fontSize: 18, textColor: "000000"),
+                  title: getTranslated(context, "DrawerStoreLocation"),
+                  fontSize: 18,
+                  textColor: "000000"),
             ),
             ListTile(
               title: TextComponent(
-                  title: "About Us", fontSize: 18, textColor: "000000"),
+                  title: getTranslated(context, "DrawerAboutUs"),
+                  fontSize: 18,
+                  textColor: "000000"),
             ),
             ListTile(
               title: TextComponent(
-                  title: "Contanct Us", fontSize: 18, textColor: "000000"),
+                  title: getTranslated(context, "DrawerContactUs"),
+                  fontSize: 18,
+                  textColor: "000000"),
             ),
             SizedBox(
               height: 30,
@@ -167,7 +159,9 @@ class _AppState extends State<App> {
                   Navigator.pushReplacementNamed(context, mLoginScreen),
               child: ListTile(
                 title: TextComponent(
-                    title: "Logout", fontSize: 18, textColor: "000000"),
+                    title: getTranslated(context, "DrawerLogout"),
+                    fontSize: 18,
+                    textColor: "000000"),
               ),
             ),
             Row(
@@ -177,7 +171,8 @@ class _AppState extends State<App> {
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () => _changeLanguage,
+                    onTap: () =>
+                        Provider.of<UiProvider>(context).changeLanguage(),
                     child: RaisedButtonCom(
                       borderColor: "000000",
                       borderWidth: 2,
@@ -186,7 +181,7 @@ class _AppState extends State<App> {
                       padding: 10,
                       radius: 10,
                       textColor: "000000",
-                      title: "Change to Arabic",
+                      title: getTranslated(context, "DrawerChangeLanguage"),
                       fontWieght: "bold",
                     ),
                   ),

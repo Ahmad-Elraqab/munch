@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:munch_app/components/app.dart';
 import 'package:munch_app/components/text_field_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/constants/routes.dart';
@@ -67,7 +66,7 @@ class _LoginState extends State<Login> {
                             )
                           },
                           child: RaisedButtonCom(
-                            title: "Register",
+                            title: getTranslated(context, "newUser"),
                             color: "FFFFFF",
                             fontSize: 18,
                             padding: 14,
@@ -85,7 +84,7 @@ class _LoginState extends State<Login> {
                   ),
                   TextComponent(
                     fontSize: 40,
-                    title: "Welcome back!",
+                    title: getTranslated(context, "welcomeBack"),
                     textColor: "000000",
                   ),
                   SizedBox(
@@ -93,14 +92,16 @@ class _LoginState extends State<Login> {
                   ),
                   TextFieldComponent(
                     borderRadius: 25,
-                    label: "Email or mobile",
+                    label: getTranslated(
+                        context, "loginInputFieldEmailPlaceholder"),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   TextFieldComponent(
                     borderRadius: 25,
-                    label: "Password",
+                    label: getTranslated(
+                        context, "loginInputFieldPasswordPlaceholder"),
                   ),
                   SizedBox(
                     height: 10,
@@ -122,7 +123,7 @@ class _LoginState extends State<Login> {
                       TextComponent(
                         fontSize: 16,
                         textColor: "000000",
-                        title: "Remember me?",
+                        title: getTranslated(context, "loginRememberMe"),
                       ),
                     ],
                   ),
@@ -154,7 +155,7 @@ class _LoginState extends State<Login> {
                             Navigator.pushReplacementNamed(context, mUserReturn)
                           },
                           child: RaisedButtonCom(
-                            title: "Login",
+                            title: getTranslated(context, "login"),
                             color: "F26882",
                             fontSize: 18,
                             padding: 20,

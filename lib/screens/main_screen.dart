@@ -30,7 +30,7 @@ class MainScreen extends StatelessWidget {
                       height: 40,
                     ),
                     Text(
-                      'Order now!',
+                      getTranslated(context, "orderNowHeader"),
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                         color: Colors.white,
@@ -39,18 +39,7 @@ class MainScreen extends StatelessWidget {
                       )),
                     ),
                     SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Feeling hungry? Want a quick birthday cake? \nEngagement surprise? jsut want to try something new?',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.openSans(
-                        textStyle:
-                            TextStyle(color: Colors.white, fontSize: 11.5),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
                     Row(
                       children: [
@@ -67,7 +56,7 @@ class MainScreen extends StatelessWidget {
                               )
                             },
                             child: RaisedButtonCom(
-                              title: "Locate me",
+                              title: getTranslated(context, "locateMe"),
                               color: "F26882",
                               fontSize: 14,
                               padding: 10,
@@ -94,7 +83,7 @@ class MainScreen extends StatelessWidget {
                               buildShowDialog(context);
                             },
                             child: RaisedButtonCom(
-                              title: "Choose city",
+                              title: getTranslated(context, "chooseCity"),
                               color: "F26882",
                               fontSize: 14,
                               padding: 10,
@@ -133,7 +122,7 @@ class MainScreen extends StatelessWidget {
             child: TextComponent(
               fontSize: 16,
               textColor: "FFFFFF",
-              title: "Choose your city",
+              title: getTranslated(context, "chooseCity"),
             ),
           ),
           shape:

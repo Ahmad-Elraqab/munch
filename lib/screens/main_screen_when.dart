@@ -28,7 +28,7 @@ class MainScreenWhen extends StatelessWidget {
                       height: 40,
                     ),
                     Text(
-                      'When',
+                      getTranslated(context, "whenButton"),
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                         color: Colors.white,
@@ -57,7 +57,7 @@ class MainScreenWhen extends StatelessWidget {
                             onTap: () =>
                                 {Navigator.pushNamed(context, mCategory)},
                             child: RaisedButtonCom(
-                              title: "I want it now",
+                              title: getTranslated(context, "orderNowButton"),
                               color: "F26882",
                               fontSize: 14,
                               padding: 10,
@@ -81,7 +81,8 @@ class MainScreenWhen extends StatelessWidget {
                             onTap: () =>
                                 {Navigator.pushNamed(context, mCategory)},
                             child: RaisedButtonCom(
-                              title: "I want reservation",
+                              title:
+                                  getTranslated(context, "reservationButton"),
                               color: "F26882",
                               fontSize: 14,
                               padding: 10,

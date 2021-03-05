@@ -4,7 +4,9 @@
     "welcomeBack": "Welcome back",
     "loginInputFieldEmailPlaceholder": "Email/Mobile ex. 0512345678",
     "loginInputFieldPasswordPlaceholder": "Password",
+    "RepeatPasswordPlaceholder": "Repeat Password",
     "loginGetNewPassword": "Get new password by sms",
+    "loginRememberMe": "Remember me ?",
     "newUserFullName": "Full Name",
     "newUserFullPhoneNumber": "Phone Number",
     "newUserFullEmail": "Email Address (Optional)",
@@ -12,8 +14,15 @@
     "newUserRegisterButton": "Register",
     "mainPageAddNewAddressButton": "Add new address",
     "mainPageBrowseProductsButton": "Browse Products",
+    "locateMe": "Locate Me",
+    "orderNowHeader": "Order Now!",
+    "chooseCity": "Choose city",
+    "reservationButton": "I want reservation",
+    "orderNowButton": "I want it now",
+    "whenButton": "When",
     "mainPageRecommendedProducts": "Recommended For You",
     "mainPageByNowButton": "Buy Now",
+    "currency": "SAR",
     "bottomNavigationBarProductsButton": "Products",
     "bottomNavigationBarOrdersButton": "Orders",
     "bottomNavigationBarMunchBunchButton": "Munch Bunch",
@@ -24,5 +33,5 @@
     "DrawerAboutUs": "About Us",
     "DrawerContactUs": "Contact Us",
     "DrawerLogout": "Logout",
-    "DrawerChangeLanguage": "Change to Arabic"
+    "DrawerChangeLanguage": "Change to Arabic/English"
 }

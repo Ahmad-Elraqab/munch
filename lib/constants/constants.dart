@@ -18,3 +18,5 @@ class HexColor extends Color {
 String getTranslated(BuildContext context, String key) {
   return DemoLocalization.of(context).getTranslatedValue(key);
 }
+
+bool isEnglish;

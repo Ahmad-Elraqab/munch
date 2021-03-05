@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:munch_app/localization/demo_localization.dart';
 import 'package:provider/provider.dart';
 import 'models/router.dart';
+import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/providers/user_provider.dart';
 
 class AppView extends StatefulWidget {
@@ -11,6 +12,8 @@ class AppView extends StatefulWidget {
     _AppViewState state = context.findAncestorStateOfType<_AppViewState>();
     state.setLocale(locale);
   }
+
+  bool isEnglish;
 
   @override
   _AppViewState createState() => _AppViewState();
@@ -48,6 +51,7 @@ class _AppViewState extends State<AppView> {
             for (var d in deviceLocale) {
               if (locale.languageCode == d.languageCode &&
                   locale.countryCode == d.countryCode) {
+                d.countryCode == "SA" ? isEnglish = false : isEnglish = true;
                 return d;
               }
             }

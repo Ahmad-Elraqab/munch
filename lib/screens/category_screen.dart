@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
+import 'package:munch_app/constants/constants.dart';
 
 class CategoryList extends StatefulWidget {
   @override
@@ -55,7 +56,7 @@ class RrestaurantStatesList extends State<CategoryList> {
                         padding: 8,
                         radius: 12,
                         textColor: "000000",
-                        title: "Buy Now",
+                        title: getTranslated(context, "mainPageByNowButton"),
                       ),
                     )
                   ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/components/raised_button_component.dart';
+import 'package:munch_app/constants/constants.dart';
 
 class ListViewComponent extends StatelessWidget {
   const ListViewComponent({
@@ -14,11 +15,11 @@ class ListViewComponent extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 16.0, top: 16),
+            padding: const EdgeInsets.only(left: 16.0, top: 16, right: 16.0),
             child: Row(
               children: [
                 Text(
-                  'Recomended for you',
+                  getTranslated(context, "mainPageRecommendedProducts"),
                   style: GoogleFonts.openSans(
                     textStyle: TextStyle(
                       color: Colors.black,
@@ -34,43 +35,29 @@ class ListViewComponent extends StatelessWidget {
             height: 20,
           ),
           Container(
-            height: 280,
+            height: 260,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
+                    width: MediaQuery.of(context).size.width / 3,
                     padding: EdgeInsets.all(12.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         // SvgPicture.asset(
                         //   'lib/assets/main_logo.svg',
                         // ),
                         Container(
-                          height: 150,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(80),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                spreadRadius: 3,
-                                blurRadius: 9,
-                                offset:
-                                    Offset(0, 3), // changes position of shadow
-                              ),
-                            ],
-                          ),
+                          color: Colors.white,
                           child: Image(
                             image: NetworkImage(
-                                'https://liveapi.munchbakery.com/munchimages/0352900_red-velvet-cupcake.png'),
-                            fit: BoxFit.cover,
+                                'https://liveapi.munchbakery.com/munchimages/0353178_mini-cupcakes.png'),
+                            fit: BoxFit.contain,
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
+
                         Text(
                           'Carrot Cake',
                           style: GoogleFonts.openSans(
@@ -83,33 +70,28 @@ class ListViewComponent extends StatelessWidget {
                         SizedBox(
                           height: 5,
                         ),
-                        Text(
-                          '6.00 (SAR)',
-                          style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                              color: Colors.pink,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
                         SizedBox(
                           height: 5,
                         ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () => {},
-                            child: RaisedButtonCom(
-                              title: "Buy Now",
-                              color: "FFFFFF",
-                              fontSize: 13,
-                              padding: 8,
-                              radius: 10,
-                              textColor: "000000",
-                              borderColor: "000000",
-                              borderWidth: 3,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () => {},
+                                child: RaisedButtonCom(
+                                  title: getTranslated(
+                                      context, "mainPageByNowButton"),
+                                  color: "FFFFFF",
+                                  fontSize: 13,
+                                  padding: 8,
+                                  radius: 10,
+                                  textColor: "000000",
+                                  borderColor: "000000",
+                                  borderWidth: 3,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                         SizedBox(
                           height: 10,

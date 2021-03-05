@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/components/text_field_component.dart';
 import 'package:munch_app/constants/routes.dart';
+import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import '../components/raised_button_component.dart';
 
@@ -46,7 +47,7 @@ class _SignUpState extends State<SignUp> {
                             )
                           },
                           child: RaisedButtonCom(
-                            title: "Login",
+                            title: getTranslated(context, "login"),
                             color: "FFFFFF",
                             fontSize: 18,
                             padding: 14,
@@ -64,7 +65,7 @@ class _SignUpState extends State<SignUp> {
                         child: GestureDetector(
                           onTap: () => {},
                           child: RaisedButtonCom(
-                            title: "Register",
+                            title: getTranslated(context, "newUser"),
                             color: "66CDAA",
                             fontSize: 18,
                             padding: 14,
@@ -82,28 +83,29 @@ class _SignUpState extends State<SignUp> {
                   ),
                   TextFieldComponent(
                     borderRadius: 25,
-                    label: "Mobile",
+                    label: getTranslated(context, "newUserFullPhoneNumber"),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   TextFieldComponent(
                     borderRadius: 25,
-                    label: "Email",
+                    label: getTranslated(context, "newUserFullEmail"),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   TextFieldComponent(
                     borderRadius: 25,
-                    label: "Password",
+                    label: getTranslated(
+                        context, "loginInputFieldPasswordPlaceholder"),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   TextFieldComponent(
                     borderRadius: 25,
-                    label: "Repeat Password",
+                    label: getTranslated(context, "RepeatPasswordPlaceholder"),
                   ),
                   SizedBox(
                     height: 10,
@@ -136,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                             Navigator.pushReplacementNamed(context, mMainScreen)
                           },
                           child: RaisedButtonCom(
-                            title: "Register",
+                            title: getTranslated(context, "newUser"),
                             color: "F26882",
                             fontSize: 18,
                             padding: 20,
