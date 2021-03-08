@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:munch_app/constants/routes.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatefulWidget {
@@ -61,19 +62,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
           ),
         ),
         Positioned(
-          left: MediaQuery.of(context).size.width / 2 - 40,
-          top: widget.height - 40,
-          child: CircleAvatar(
-            maxRadius: 40,
-            backgroundImage: NetworkImage(
-                'https://b2b.munchbakery.com/wp-content/uploads/2018/12/logo-munch.png'),
-          ),
+            left: MediaQuery.of(context).size.width / 2 - 40,
+            top: widget.height - 40,
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                  mMainScreen, (Route<dynamic> route) => false),
+              child: Container(
+                width: 80,
+                height: 80,
+                child: SvgPicture.asset(
+                  'lib/assets/Logo.svg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )),
 
-          // child:
-          // SvgPicture.asset(
-          //   'lib/assets/main_logo.svg',
-          // ),
-        ),
+        // child:
+        // SvgPicture.asset(
+        //   'lib/assets/main_logo.svg',
+        // ),
       ],
     );
   }

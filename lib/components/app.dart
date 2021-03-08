@@ -4,6 +4,8 @@ import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
 import 'package:munch_app/providers/user_provider.dart';
 import 'package:munch_app/screens/category_screen.dart';
+import 'package:munch_app/screens/item_view_screen.dart';
+import 'package:munch_app/screens/items_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
 import 'package:munch_app/screens/returning_user_screen.dart';
@@ -38,7 +40,7 @@ class _AppState extends State<App> {
         return ReturningUser();
         break;
       case "0":
-        return ReturningUser();
+        return CategoryList();
         break;
       case "1":
         return Container();
@@ -46,8 +48,8 @@ class _AppState extends State<App> {
       case "2":
         return Container();
         break;
-      case "3":
-        return Container();
+      case "3": 
+        _scaffoldKey.currentState.openDrawer();
         break;
       case mUserReturn:
         return ReturningUser();
@@ -67,14 +69,22 @@ class _AppState extends State<App> {
       case mCategory:
         return CategoryList();
         break;
+      case mItemScreen:
+        return ItemScreen();
+        break;
+      case mItemViewScreen:
+        return ItemViewScreen();
+        break;
     }
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     // final dataService = service<DataService>();
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         drawer: MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             child: buildDrawer(context)),
@@ -155,15 +165,23 @@ class _AppState extends State<App> {
               height: 30,
             ),
             GestureDetector(
-              onTap: () =>
-                  Navigator.pushReplacementNamed(context, mLoginScreen),
-              child: ListTile(
-                title: TextComponent(
-                    title: getTranslated(context, "DrawerLogout"),
-                    fontSize: 18,
-                    textColor: "000000"),
-              ),
-            ),
+                onTap: () {
+                  Provider.of<UiProvider>(context).changeState();
+                  // Navigator.pushReplacementNamed(context, mLoginScreen);
+                },
+                child: Provider.of<UiProvider>(context).loggedIn == true
+                    ? ListTile(
+                        title: TextComponent(
+                            title: getTranslated(context, "DrawerLogout"),
+                            fontSize: 18,
+                            textColor: "000000"),
+                      )
+                    : ListTile(
+                        title: TextComponent(
+                            title: getTranslated(context, "DrawerLogin"),
+                            fontSize: 18,
+                            textColor: "000000"),
+                      )),
             Row(
               children: [
                 SizedBox(
@@ -171,13 +189,14 @@ class _AppState extends State<App> {
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: () =>
-                        Provider.of<UiProvider>(context).changeLanguage(),
+                    onTap: () {
+                      Provider.of<UiProvider>(context).changeLanguage();
+                    },
                     child: RaisedButtonCom(
                       borderColor: "000000",
                       borderWidth: 2,
                       color: "FFFFFF",
-                      fontSize: 14,
+                      fontSize: 16,
                       padding: 10,
                       radius: 10,
                       textColor: "000000",
@@ -208,60 +227,110 @@ class _AppState extends State<App> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           _getNavItem(
-              index: '0',
-              iconActive: SvgPicture.asset(
-                'lib/assets/Nav-Products_Active.svg',
-                color: HexColor('F26882'),
-              ),
-              iconInactive: SvgPicture.asset(
-                'lib/assets/Nav-Products_Inactive.svg',
-                color: HexColor('C7C7C7'),
-              )),
+            index: '0',
+            iconActive: SvgPicture.asset(
+              'lib/assets/Nav-Products_Active.svg',
+              color: HexColor('F26882'),
+            ),
+            iconInactive: SvgPicture.asset(
+              'lib/assets/Nav-Products_Inactive.svg',
+              color: HexColor('C7C7C7'),
+            ),
+            title: getTranslated(context, 'bottomNavigationBarProductsButton'),
+          ),
           _getNavItem(
-              index: '1',
-              iconActive: SvgPicture.asset(
-                'lib/assets/Nav-Orders_Active.svg',
-                color: HexColor('F26882'),
-              ),
-              iconInactive: SvgPicture.asset(
-                'lib/assets/Nav-Orders_Inactive.svg',
-                color: HexColor('C7C7C7'),
-              )),
+            index: '1',
+            iconActive: SvgPicture.asset(
+              'lib/assets/Nav-Orders_Active.svg',
+              color: HexColor('F26882'),
+            ),
+            iconInactive: SvgPicture.asset(
+              'lib/assets/Nav-Orders_Inactive.svg',
+              color: HexColor('C7C7C7'),
+            ),
+            title: getTranslated(context, 'bottomNavigationBarOrdersButton'),
+          ),
           _getNavItem(
-              index: '2',
-              iconActive: SvgPicture.asset(
-                'lib/assets/Nav-MunchBunch_Active.svg',
-                color: HexColor('F26882'),
-              ),
-              iconInactive: SvgPicture.asset(
-                'lib/assets/Nav-MunchBunch_Inactive.svg',
-                color: HexColor('C7C7C7'),
-              )),
+            index: '2',
+            iconActive: SvgPicture.asset(
+              'lib/assets/Nav-MunchBunch_Active.svg',
+              color: HexColor('F26882'),
+            ),
+            iconInactive: SvgPicture.asset(
+              'lib/assets/Nav-MunchBunch_Inactive.svg',
+              color: HexColor('C7C7C7'),
+            ),
+            title:
+                getTranslated(context, 'bottomNavigationBarMunchBunchButton'),
+          ),
           _getNavItem(
-              index: '3',
-              iconActive: SvgPicture.asset(
-                'lib/assets/Nav-More_Active.svg',
-                color: HexColor('F26882'),
-              ),
-              iconInactive: SvgPicture.asset(
-                'lib/assets/Nav-More_Inactive.svg',
-                color: HexColor('C7C7C7'),
-              )),
+            index: '3',
+            iconActive: SvgPicture.asset(
+              'lib/assets/Nav-More_Active.svg',
+              color: HexColor('F26882'),
+            ),
+            iconInactive: SvgPicture.asset(
+              'lib/assets/Nav-More_Inactive.svg',
+              color: HexColor('C7C7C7'),
+            ),
+            title: getTranslated(context, 'bottomNavigationBarMenuButton'),
+          ),
         ],
       ),
     );
   }
 
-  Widget _getNavItem(
-      {String index, SvgPicture iconActive, SvgPicture iconInactive}) {
+  Widget _getNavItem({
+    String index,
+    SvgPicture iconActive,
+    SvgPicture iconInactive,
+    String title,
+  }) {
     return InkWell(
       onTap: () {
         setState(() {
           widget.currentIndex = index.toString();
         });
       },
-      child: Container(
-          child: widget.currentIndex == index ? iconActive : iconInactive),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+              child: widget.currentIndex == index ? iconActive : iconInactive),
+          TextComponent(
+            fontSize: 12,
+            title: title,
+            textColor: widget.currentIndex == index ? 'F26882' : 'C7C7C7',
+          )
+        ],
+      ),
     );
   }
+}
+
+Future buildShowDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Container(
+          height: 50,
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 1, color: Colors.white),
+            ),
+          ),
+          child: TextComponent(
+            fontSize: 16,
+            textColor: "FFFFFF",
+            title: getTranslated(context, "chooseCity"),
+          ),
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        content: Login(),
+        backgroundColor: HexColor("F26882"),
+        actions: [],
+      );
+    },
+  );
 }

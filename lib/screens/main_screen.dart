@@ -21,7 +21,7 @@ class MainScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                color: pink,
+                color: Colors.white,
                 height: 300,
                 padding: EdgeInsets.all(20.0),
                 child: Column(
@@ -33,13 +33,13 @@ class MainScreen extends StatelessWidget {
                       getTranslated(context, "orderNowHeader"),
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 35,
                         fontWeight: FontWeight.w700,
                       )),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 10,
                     ),
                     Row(
                       children: [
@@ -57,12 +57,12 @@ class MainScreen extends StatelessWidget {
                             },
                             child: RaisedButtonCom(
                               title: getTranslated(context, "locateMe"),
-                              color: "F26882",
-                              fontSize: 14,
+                              color: "FFFFFF",
+                              fontSize: 16,
                               padding: 10,
                               radius: 10,
-                              textColor: "FFFFFF",
-                              borderColor: "FFFFFF",
+                              textColor: "000000",
+                              borderColor: "000000",
                               borderWidth: 2,
                             ),
                           ),
@@ -70,8 +70,14 @@ class MainScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      child: Text("or"),
-                      height: 5,
+                      child: Center(
+                        child: TextComponent(
+                          fontSize: 16,
+                          title: getTranslated(context, "orButton").toString(),
+                          textColor: "000000",
+                        ),
+                      ),
+                      height: 40,
                     ),
                     Row(
                       children: [
@@ -84,12 +90,12 @@ class MainScreen extends StatelessWidget {
                             },
                             child: RaisedButtonCom(
                               title: getTranslated(context, "chooseCity"),
-                              color: "F26882",
-                              fontSize: 14,
+                              color: "FFFFFF",
+                              fontSize: 16,
                               padding: 10,
-                              radius: 10,
-                              textColor: "FFFFFF",
-                              borderColor: "FFFFFF",
+                              radius: 25,
+                              textColor: "000000",
+                              borderColor: "000000",
                               borderWidth: 2,
                             ),
                           ),
@@ -98,6 +104,10 @@ class MainScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              Divider(
+                thickness: 1,
+                color: Colors.grey,
               ),
               ListViewComponent(),
             ],
@@ -116,12 +126,12 @@ class MainScreen extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(width: 1, color: Colors.white),
+                bottom: BorderSide(width: 1, color: Colors.black),
               ),
             ),
             child: TextComponent(
               fontSize: 16,
-              textColor: "FFFFFF",
+              textColor: "000000",
               title: getTranslated(context, "chooseCity"),
             ),
           ),
@@ -147,7 +157,7 @@ class MainScreen extends StatelessWidget {
                       borderWidth: 0,
                       radius: 0,
                       padding: 16,
-                      textColor: "FFFFFF",
+                      textColor: "000000",
                       title: "Makkah",
                     ),
                   ),
@@ -156,14 +166,14 @@ class MainScreen extends StatelessWidget {
                     child: Divider(
                       thickness: 1,
                       height: 2,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          backgroundColor: HexColor("F26882"),
+          backgroundColor: HexColor("FFFFFF"),
           actions: [],
         );
       },

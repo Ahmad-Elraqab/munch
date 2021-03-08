@@ -18,7 +18,7 @@ class ReturningUser extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: pink,
+              color: Colors.white,
               height: 300,
               padding: EdgeInsets.all(20.0),
               child: Column(
@@ -30,7 +30,7 @@ class ReturningUser extends StatelessWidget {
                     getTranslated(context, "welcomeBack"),
                     style: GoogleFonts.openSans(
                         textStyle: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 35,
                       fontWeight: FontWeight.w700,
                     )),
@@ -55,12 +55,12 @@ class ReturningUser extends StatelessWidget {
                           },
                           child: RaisedButtonCom(
                             title: "Office",
-                            color: "F26882",
-                            fontSize: 14,
+                            color: "FFFFFF",
+                            fontSize: 16,
                             padding: 10,
                             radius: 10,
-                            textColor: "FFFFFF",
-                            borderColor: "FFFFFF",
+                            textColor: "000000",
+                            borderColor: "000000",
                             borderWidth: 2,
                           ),
                         ),
@@ -71,12 +71,12 @@ class ReturningUser extends StatelessWidget {
                       Expanded(
                         child: RaisedButtonCom(
                           title: "Work",
-                          color: "F26882",
-                          fontSize: 14,
+                          color: "FFFFFF",
+                          fontSize: 16,
                           padding: 10,
                           radius: 10,
-                          textColor: "FFFFFF",
-                          borderColor: "FFFFFF",
+                          textColor: "000000",
+                          borderColor: "000000",
                           borderWidth: 2,
                         ),
                       ),
@@ -86,12 +86,12 @@ class ReturningUser extends StatelessWidget {
                       Expanded(
                         child: RaisedButtonCom(
                           title: "Home",
-                          color: "F26882",
-                          fontSize: 14,
+                          color: "FFFFFF",
+                          fontSize: 16,
                           padding: 10,
                           radius: 10,
-                          textColor: "FFFFFF",
-                          borderColor: "FFFFFF",
+                          textColor: "000000",
+                          borderColor: "000000",
                           borderWidth: 2,
                         ),
                       ),
@@ -117,12 +117,12 @@ class ReturningUser extends StatelessWidget {
                           child: RaisedButtonCom(
                             title: getTranslated(
                                 context, "mainPageAddNewAddressButton"),
-                            color: "F26882",
-                            fontSize: 14,
+                            color: "FFFFFF",
+                            fontSize: 16,
                             padding: 10,
                             radius: 10,
-                            textColor: "FFFFFF",
-                            borderColor: "FFFFFF",
+                            textColor: "000000",
+                            borderColor: "000000",
                             borderWidth: 2,
                           ),
                         ),
@@ -131,6 +131,10 @@ class ReturningUser extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Divider(
+              color: Colors.grey,
+              thickness: 2,
             ),
             ListViewComponent(),
           ],

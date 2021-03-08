@@ -23,16 +23,13 @@ class ListViewComponent extends StatelessWidget {
                   style: GoogleFonts.openSans(
                     textStyle: TextStyle(
                       color: Colors.black,
-                      fontSize: 14,
+                      fontSize: 16,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
               ],
             ),
-          ),
-          SizedBox(
-            height: 20,
           ),
           Container(
             height: 260,
@@ -41,7 +38,7 @@ class ListViewComponent extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    width: MediaQuery.of(context).size.width / 3,
+                    width: MediaQuery.of(context).size.width / 2.5,
                     padding: EdgeInsets.all(12.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,15 +60,12 @@ class ListViewComponent extends StatelessWidget {
                           style: GoogleFonts.openSans(
                               textStyle: TextStyle(
                             color: Colors.black,
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.w700,
                           )),
                         ),
                         SizedBox(
-                          height: 5,
-                        ),
-                        SizedBox(
-                          height: 5,
+                          height: 10,
                         ),
                         Row(
                           children: [
@@ -82,19 +76,16 @@ class ListViewComponent extends StatelessWidget {
                                   title: getTranslated(
                                       context, "mainPageByNowButton"),
                                   color: "FFFFFF",
-                                  fontSize: 13,
+                                  fontSize: 14,
                                   padding: 8,
                                   radius: 10,
                                   textColor: "000000",
                                   borderColor: "000000",
-                                  borderWidth: 3,
+                                  borderWidth: 2,
                                 ),
                               ),
                             ),
                           ],
-                        ),
-                        SizedBox(
-                          height: 10,
                         ),
                       ],
                     ),

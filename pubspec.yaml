@@ -45,6 +45,13 @@ dev_dependencies:
     sdk: flutter
   pedantic: ^1.9.0
   build_runner: ^1.10.0
+  flutter_native_splash: ^0.2.8
+
+flutter_native_splash:
+  color: "#f8b2c0"
+  image: "lib/assets/m_Logo.png"
+  android: true
+  ios: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -20,8 +20,11 @@
     "reservationButton": "I want reservation",
     "orderNowButton": "I want it now",
     "whenButton": "When",
+    "orButton": "or",
+    "HowMany": "How Many?",
     "mainPageRecommendedProducts": "Recommended For You",
     "mainPageByNowButton": "Buy Now",
+    "addToCartButton": "Add to cart",
     "currency": "SAR",
     "bottomNavigationBarProductsButton": "Products",
     "bottomNavigationBarOrdersButton": "Orders",
@@ -33,5 +36,6 @@
     "DrawerAboutUs": "About Us",
     "DrawerContactUs": "Contact Us",
     "DrawerLogout": "Logout",
+    "DrawerLogin": "Login",
     "DrawerChangeLanguage": "Change to Arabic/English"
 }

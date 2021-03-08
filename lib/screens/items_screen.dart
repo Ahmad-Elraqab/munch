@@ -4,12 +4,12 @@ import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/constants/routes.dart';
 
-class CategoryList extends StatefulWidget {
+class ItemScreen extends StatefulWidget {
   @override
   RrestaurantStatesList createState() => RrestaurantStatesList();
 }
 
-class RrestaurantStatesList extends State<CategoryList> {
+class RrestaurantStatesList extends State<ItemScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,7 +48,8 @@ class RrestaurantStatesList extends State<CategoryList> {
                       height: 30,
                     ),
                     GestureDetector(
-                      onTap: () => {Navigator.pushNamed(context, mItemScreen)},
+                      onTap: () =>
+                          {Navigator.pushNamed(context, mItemViewScreen)},
                       child: RaisedButtonCom(
                         width: MediaQuery.of(context).size.width * 0.35,
                         height: 35,
@@ -59,7 +60,7 @@ class RrestaurantStatesList extends State<CategoryList> {
                         padding: 2,
                         radius: 12,
                         textColor: "000000",
-                        title: getTranslated(context, "mainPageByNowButton"),
+                        title: getTranslated(context, "addToCartButton"),
                       ),
                     )
                   ],

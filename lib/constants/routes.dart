@@ -6,3 +6,5 @@ const String mMainScreen = "/main-screen";
 const String mMainScreenWhen = "/main-screen-when";
 const String mMaps = "/map-location";
 const String mCategory = "/category-list";
+const String mItemScreen = "/items-list";
+const String mItemViewScreen = "/item-view";

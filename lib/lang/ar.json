@@ -20,9 +20,12 @@
     "orderNowHeader": "اطلب الان",
     "orderNowButton": "الان",
     "whenButton": "!متى",
+    "orButton": "أو",
     "mainPageRecommendedProducts": "اخترنا لك",
     "mainPageByNowButton": "اشتر الان",
+    "addToCartButton": "أضف الى العربة",
     "currency": "ريال",
+    "HowMany": "كم العدد؟",
     "bottomNavigationBarProductsButton": "المنتجات",
     "bottomNavigationBarOrdersButton": "الطلبات",
     "bottomNavigationBarMunchBunchButton": "منش بنش",
@@ -33,5 +36,6 @@
     "DrawerAboutUs": "من نحن",
     "DrawerContactUs": "تواصل معنا",
     "DrawerLogout": "تسجيل الخروج",
+    "DrawerLogin": "تسجيل الدخول",
     "DrawerChangeLanguage": "Change to Arabic/English"
 }

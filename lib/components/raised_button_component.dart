@@ -13,6 +13,8 @@ class RaisedButtonCom extends StatefulWidget {
   String borderColor;
   double borderWidth;
   String fontWieght;
+  double height;
+  double width;
 
   RaisedButtonCom({
     this.title,
@@ -24,6 +26,8 @@ class RaisedButtonCom extends StatefulWidget {
     this.borderColor,
     this.borderWidth,
     this.fontWieght,
+    this.height,
+    this.width,
   });
 
   @override
@@ -34,6 +38,8 @@ class _RaisedButtonComState extends State<RaisedButtonCom> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: widget.height,
+      width: widget.width,
       padding: EdgeInsets.all(widget.padding),
       decoration: BoxDecoration(
         color: HexColor(widget.color),
@@ -41,10 +47,12 @@ class _RaisedButtonComState extends State<RaisedButtonCom> {
         border: Border.all(
             color: HexColor(widget.borderColor), width: widget.borderWidth),
       ),
-      child: TextComponent(
-        fontSize: widget.fontSize,
-        textColor: widget.textColor,
-        title: widget.title,
+      child: Center(
+        child: TextComponent(
+          fontSize: widget.fontSize,
+          textColor: widget.textColor,
+          title: widget.title,
+        ),
       ),
     );
   }

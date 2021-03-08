@@ -5,6 +5,17 @@ import 'package:munch_app/constants/constants.dart';
 
 class UiProvider with ChangeNotifier {
   BuildContext context;
+  bool loggedIn = true;
+
+  void changeState() {
+    if (loggedIn == false) {
+      loggedIn = true;
+    } else {
+      loggedIn = false;
+    }
+    notifyListeners();
+  }
+
   void changeLanguage() {
     // Navigator.pushReplacementNamed(context, mLoginScreen)
     print("object");
