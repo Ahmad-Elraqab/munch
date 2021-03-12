@@ -8,3 +8,5 @@ const String mMaps = "/map-location";
 const String mCategory = "/category-list";
 const String mItemScreen = "/items-list";
 const String mItemViewScreen = "/item-view";
+const String mOrdersScreen = "/orders-screen";
+const String mCartScreen= "/cart";

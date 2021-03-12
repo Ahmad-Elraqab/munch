@@ -54,7 +54,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       'lib/assets/Icon_Cart.svg',
                       fit: BoxFit.cover,
                     ),
-                    onPressed: () => {},
+                    onPressed: () =>
+                        {Navigator.pushNamed(context, mCartScreen)},
                   ),
                 ],
               ),

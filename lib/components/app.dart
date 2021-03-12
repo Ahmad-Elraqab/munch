@@ -5,12 +5,14 @@ import 'package:munch_app/components/custom_app_bar.dart';
 import 'package:munch_app/providers/user_provider.dart';
 import 'package:munch_app/screens/category_screen.dart';
 import 'package:munch_app/screens/item_view_screen.dart';
+import 'package:munch_app/screens/cart_screen.dart';
 import 'package:munch_app/screens/items_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
 import 'package:munch_app/screens/returning_user_screen.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/screens/main_screen.dart';
+import 'package:munch_app/screens/orders_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/screens/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
@@ -43,12 +45,12 @@ class _AppState extends State<App> {
         return CategoryList();
         break;
       case "1":
-        return Container();
+        return OrderScreen();
         break;
       case "2":
         return Container();
         break;
-      case "3": 
+      case "3":
         _scaffoldKey.currentState.openDrawer();
         break;
       case mUserReturn:
@@ -74,6 +76,9 @@ class _AppState extends State<App> {
         break;
       case mItemViewScreen:
         return ItemViewScreen();
+        break;
+      case mCartScreen:
+        return CartScreen();
         break;
     }
   }
