@@ -9,6 +9,7 @@ import 'package:munch_app/screens/cart_screen.dart';
 import 'package:munch_app/screens/items_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
+import 'package:munch_app/screens/munch_bunch_screen.dart';
 import 'package:munch_app/screens/profile_screen.dart';
 import 'package:munch_app/screens/returning_user_screen.dart';
 import 'package:munch_app/components/text_component.dart';
@@ -49,7 +50,7 @@ class _AppState extends State<App> {
         return OrderScreen();
         break;
       case "2":
-        return Container();
+        return MunchBunch();
         break;
       case "3":
         _scaffoldKey.currentState.openDrawer();
