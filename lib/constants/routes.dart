@@ -10,3 +10,4 @@ const String mItemScreen = "/items-list";
 const String mItemViewScreen = "/item-view";
 const String mOrdersScreen = "/orders-screen";
 const String mCartScreen= "/cart";
+const String mProfileScreen= "/profile";

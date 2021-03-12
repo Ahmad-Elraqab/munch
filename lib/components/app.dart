@@ -9,6 +9,7 @@ import 'package:munch_app/screens/cart_screen.dart';
 import 'package:munch_app/screens/items_screen.dart';
 import 'package:munch_app/screens/login_screen.dart';
 import 'package:munch_app/screens/map_location.dart';
+import 'package:munch_app/screens/profile_screen.dart';
 import 'package:munch_app/screens/returning_user_screen.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/screens/main_screen.dart';
@@ -80,6 +81,9 @@ class _AppState extends State<App> {
       case mCartScreen:
         return CartScreen();
         break;
+      case mProfileScreen:
+        return Profile();
+        break;
     }
   }
 
@@ -137,10 +141,14 @@ class _AppState extends State<App> {
               height: 30,
             ),
             ListTile(
-              title: TextComponent(
-                  title: getTranslated(context, "DrawerMyAccount"),
-                  fontSize: 18,
-                  textColor: "000000"),
+              title: GestureDetector(
+                onTap: () =>
+                    Navigator.of(context).pushReplacementNamed(mProfileScreen),
+                child: TextComponent(
+                    title: getTranslated(context, "DrawerMyAccount"),
+                    fontSize: 18,
+                    textColor: "000000"),
+              ),
             ),
             ListTile(
               title: TextComponent(
@@ -206,7 +214,6 @@ class _AppState extends State<App> {
                       radius: 10,
                       textColor: "000000",
                       title: getTranslated(context, "DrawerChangeLanguage"),
-                      fontWieght: "bold",
                     ),
                   ),
                 ),

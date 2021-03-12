@@ -12,7 +12,7 @@ class RaisedButtonCom extends StatefulWidget {
   String textColor;
   String borderColor;
   double borderWidth;
-  String fontWieght;
+  FontWeight fontWieght;
   double height;
   double width;
 
@@ -25,7 +25,7 @@ class RaisedButtonCom extends StatefulWidget {
     this.textColor,
     this.borderColor,
     this.borderWidth,
-    this.fontWieght,
+    this.fontWieght = FontWeight.bold,
     this.height,
     this.width,
   });
@@ -52,6 +52,7 @@ class _RaisedButtonComState extends State<RaisedButtonCom> {
           fontSize: widget.fontSize,
           textColor: widget.textColor,
           title: widget.title,
+          weight: widget.fontWieght,
         ),
       ),
     );
