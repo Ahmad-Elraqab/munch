@@ -7,17 +7,20 @@ class TextFieldComponent extends StatelessWidget {
   String label;
   double borderRadius;
   Provider provider;
+  int lines;
 
   TextFieldComponent({
     this.borderRadius,
     this.label,
     this.provider,
+    this.lines = 1,
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: lines,
       decoration: new InputDecoration(
         focusColor: Colors.black,
         labelText: label,

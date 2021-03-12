@@ -12,3 +12,4 @@ const String mOrdersScreen = "/orders-screen";
 const String mCartScreen = "/cart";
 const String mProfileScreen = "/profile";
 const String mMunchBunch = "/munch-bunch";
+const String mContactUs = "/contact-us";
