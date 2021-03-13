@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/components/order_status_component.dart';
 import 'package:munch_app/constants/constants.dart';
+import 'package:munch_app/constants/routes.dart';
 
 class OrderScreen extends StatefulWidget {
   @override
@@ -57,7 +58,7 @@ class _OrderScreenState extends State<OrderScreen> {
           ),
         ),
         GestureDetector(
-          onTap: null,
+          onTap: () => Navigator.pushNamed(context, mOrdersHistory),
           child: Container(
             padding: EdgeInsets.all(12.0),
             decoration: BoxDecoration(
@@ -154,10 +155,7 @@ class _OrderScreenState extends State<OrderScreen> {
           height: 20,
         ),
         OrderStatus(),
-
-
       ],
     );
   }
-
 }

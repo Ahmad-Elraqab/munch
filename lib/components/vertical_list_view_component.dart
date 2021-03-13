@@ -12,7 +12,7 @@ class VerticalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height * 0.78,
       child: GridView.count(
         crossAxisCount: 2,
         childAspectRatio: 0.8,
@@ -49,7 +49,7 @@ class VerticalListView extends StatelessWidget {
                       height: 30,
                     ),
                     GestureDetector(
-                      onTap: () => {Navigator.pushNamed(context, mItemScreen)},
+                      onTap: () => {Navigator.pushNamed(context, mItemViewScreen)},
                       child: RaisedButtonCom(
                         width: MediaQuery.of(context).size.width * 0.35,
                         height: 35,
@@ -62,7 +62,7 @@ class VerticalListView extends StatelessWidget {
                         textColor: "000000",
                         title: getTranslated(context, "mainPageByNowButton"),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -32,7 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.1
   flutter_svg: ^0.19.3
   google_fonts: ^1.1.2
-  google_maps_flutter: ^0.5.24+1
+  google_maps_flutter: ^0.4.0
   http: ^0.12.0+1
   json_serializable: ^3.3.0
   flutter_localizations:

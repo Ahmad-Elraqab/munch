@@ -13,3 +13,5 @@ const String mCartScreen = "/cart";
 const String mProfileScreen = "/profile";
 const String mMunchBunch = "/munch-bunch";
 const String mContactUs = "/contact-us";
+const String mAboutUs = "/about-us";
+const String mOrdersHistory = "/orders-history";
