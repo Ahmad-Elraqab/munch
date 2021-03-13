@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:munch_app/components/order_summary.dart';
+import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/components/order_status_component.dart';
 import 'package:munch_app/constants/constants.dart';
@@ -13,6 +15,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   bool active = true;
+  int opacity = 1;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,8 +66,8 @@ class _OrderScreenState extends State<OrderScreen> {
             padding: EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               border: Border(
-                top: BorderSide(width: 1, color: Colors.grey),
-                bottom: BorderSide(width: 1, color: Colors.grey),
+                top: BorderSide(width: 0, color: Colors.grey),
+                bottom: BorderSide(width: 0, color: Colors.grey),
               ),
             ),
             child: Center(
@@ -154,7 +157,7 @@ class _OrderScreenState extends State<OrderScreen> {
         SizedBox(
           height: 20,
         ),
-        OrderStatus(),
+        active == true ? OrderStatus() : OrderSummary(opacity: opacity)
       ],
     );
   }
