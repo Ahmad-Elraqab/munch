@@ -3,6 +3,9 @@
    <application
         android:label="munch_app"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyC8YW0nG1eW7z8B42TAMXLrvVhYTTqzoL4" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
