@@ -48,7 +48,7 @@ class RrestaurantStatesList extends State<ItemScreen> {
 //                     ),
 //                     SizedBox(
 //                       child: TextComponent(
-//                         fontSize: 16,
+//                         fontSize: 14,
 //                         textColor: "000000",
 //                         title: "Seasonal Cake",
 //                       ),

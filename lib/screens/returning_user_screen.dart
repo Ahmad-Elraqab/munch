@@ -56,7 +56,7 @@ class ReturningUser extends StatelessWidget {
                           child: RaisedButtonCom(
                             title: "Office",
                             color: "FFFFFF",
-                            fontSize: 16,
+                            fontSize: 14,
                             padding: 10,
                             radius: 10,
                             textColor: "000000",
@@ -72,7 +72,7 @@ class ReturningUser extends StatelessWidget {
                         child: RaisedButtonCom(
                           title: "Work",
                           color: "FFFFFF",
-                          fontSize: 16,
+                          fontSize: 14,
                           padding: 10,
                           radius: 10,
                           textColor: "000000",
@@ -87,7 +87,7 @@ class ReturningUser extends StatelessWidget {
                         child: RaisedButtonCom(
                           title: "Home",
                           color: "FFFFFF",
-                          fontSize: 16,
+                          fontSize: 14,
                           padding: 10,
                           radius: 10,
                           textColor: "000000",
@@ -118,7 +118,7 @@ class ReturningUser extends StatelessWidget {
                             title: getTranslated(
                                 context, "mainPageAddNewAddressButton"),
                             color: "FFFFFF",
-                            fontSize: 16,
+                            fontSize: 14,
                             padding: 10,
                             radius: 10,
                             textColor: "000000",
@@ -145,7 +145,7 @@ class ReturningUser extends StatelessWidget {
                     style: GoogleFonts.openSans(
                       textStyle: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

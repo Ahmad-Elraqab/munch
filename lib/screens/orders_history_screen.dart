@@ -34,7 +34,7 @@ class _OrderHistoryState extends State<OrderHistory> {
               ),
               TextComponent(
                 title: "Previous Orders",
-                fontSize: 18,
+                fontSize: 14,
                 align: TextAlign.center,
                 textColor: "000000",
                 weight: FontWeight.w700,
@@ -67,11 +67,11 @@ class _OrderHistoryState extends State<OrderHistory> {
                   leading: Container(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextComponent(
-                          fontSize: 16,
+                          fontSize: 14,
                           textColor: "000000",
                           title: "24/04/2021",
                           weight: FontWeight.w700,
@@ -81,13 +81,14 @@ class _OrderHistoryState extends State<OrderHistory> {
                           child: RaisedButtonCom(
                             title: "View ordered items",
                             color: "000FFFF",
-                            fontSize: 16,
+                            fontSize: 14,
                             padding: 0,
                             radius: 0,
                             textColor: "F26882",
                             borderColor: "000FFFF",
                             borderWidth: 0,
                             fontWieght: FontWeight.w700,
+                            textAlign: TextAlign.start,
                           ),
                         ),
                       ],
@@ -100,13 +101,13 @@ class _OrderHistoryState extends State<OrderHistory> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         TextComponent(
-                          fontSize: 16,
+                          fontSize: 14,
                           textColor: "000000",
                           title: "Order(#0)",
                           weight: FontWeight.w700,
                         ),
                         TextComponent(
-                          fontSize: 16,
+                          fontSize: 14,
                           textColor: "000000",
                           title: "Canceled",
                           weight: FontWeight.w700,

@@ -50,7 +50,7 @@ class MainScreenWhen extends StatelessWidget {
                             child: RaisedButtonCom(
                               title: getTranslated(context, "orderNowButton"),
                               color: "FFFFFF",
-                              fontSize: 16,
+                              fontSize: 14,
                               padding: 10,
                               radius: 10,
                               textColor: "000000",
@@ -64,7 +64,7 @@ class MainScreenWhen extends StatelessWidget {
                     SizedBox(
                       child: Center(
                         child: TextComponent(
-                          fontSize: 16,
+                          fontSize: 14,
                           title: getTranslated(context, "orButton").toString(),
                           textColor: "000000",
                         ),
@@ -81,7 +81,7 @@ class MainScreenWhen extends StatelessWidget {
                               title:
                                   getTranslated(context, "reservationButton"),
                               color: "FFFFFF",
-                              fontSize: 16,
+                              fontSize: 14,
                               padding: 10,
                               radius: 10,
                               textColor: "000000",
@@ -109,7 +109,7 @@ class MainScreenWhen extends StatelessWidget {
                       style: GoogleFonts.openSans(
                         textStyle: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -127,7 +127,7 @@ class MainScreenWhen extends StatelessWidget {
                       style: GoogleFonts.openSans(
                         textStyle: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
                       ),

@@ -58,7 +58,7 @@ class MainScreen extends StatelessWidget {
                             child: RaisedButtonCom(
                               title: getTranslated(context, "locateMe"),
                               color: "FFFFFF",
-                              fontSize: 16,
+                              fontSize: 14,
                               padding: 10,
                               radius: 10,
                               textColor: "000000",
@@ -72,7 +72,7 @@ class MainScreen extends StatelessWidget {
                     SizedBox(
                       child: Center(
                         child: TextComponent(
-                          fontSize: 16,
+                          fontSize: 14,
                           title: getTranslated(context, "orButton").toString(),
                           textColor: "000000",
                         ),
@@ -91,7 +91,7 @@ class MainScreen extends StatelessWidget {
                             child: RaisedButtonCom(
                               title: getTranslated(context, "chooseCity"),
                               color: "FFFFFF",
-                              fontSize: 16,
+                              fontSize: 14,
                               padding: 10,
                               radius: 25,
                               textColor: "000000",
@@ -119,7 +119,7 @@ class MainScreen extends StatelessWidget {
                       style: GoogleFonts.openSans(
                         textStyle: TextStyle(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -148,7 +148,7 @@ class MainScreen extends StatelessWidget {
               ),
             ),
             child: TextComponent(
-              fontSize: 16,
+              fontSize: 14,
               textColor: "000000",
               title: getTranslated(context, "chooseCity"),
             ),
@@ -171,7 +171,7 @@ class MainScreen extends StatelessWidget {
                     child: RaisedButtonCom(
                       borderColor: "00FFFFFF",
                       color: "00FFFFFF",
-                      fontSize: 16,
+                      fontSize: 14,
                       borderWidth: 0,
                       radius: 0,
                       padding: 16,

@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "login"),
                             color: "66CDAA",
-                            fontSize: 18,
+                            fontSize: 14,
                             padding: 14,
                             radius: 10,
                             textColor: "FFFFFF",
@@ -68,7 +68,7 @@ class _LoginState extends State<Login> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "newUser"),
                             color: "FFFFFF",
-                            fontSize: 18,
+                            fontSize: 14,
                             padding: 14,
                             radius: 10,
                             textColor: "000000",
@@ -121,7 +121,7 @@ class _LoginState extends State<Login> {
                         },
                       ),
                       TextComponent(
-                        fontSize: 16,
+                        fontSize: 14,
                         textColor: "000000",
                         title: getTranslated(context, "loginRememberMe"),
                       ),
@@ -157,7 +157,7 @@ class _LoginState extends State<Login> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "login"),
                             color: "F26882",
-                            fontSize: 18,
+                            fontSize: 14,
                             padding: 20,
                             radius: 30,
                             textColor: "FFFFFF",

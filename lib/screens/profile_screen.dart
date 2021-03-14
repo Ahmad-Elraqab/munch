@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
             height: 10,
           ),
           TextComponent(
-            fontSize: 18,
+            fontSize: 14,
             textColor: "000000",
             title: "Welcome",
             weight: FontWeight.w700,
@@ -49,7 +49,7 @@ class _ProfileState extends State<Profile> {
             height: 10,
           ),
           TextComponent(
-            fontSize: 18,
+            fontSize: 14,
             textColor: "000000",
             title: "0569742447",
             weight: FontWeight.w700,
@@ -58,7 +58,7 @@ class _ProfileState extends State<Profile> {
             height: 10,
           ),
           TextComponent(
-            fontSize: 18,
+            fontSize: 14,
             textColor: "000000",
             title: "0569742447@munchwebsite.com",
             weight: FontWeight.w700,
@@ -80,7 +80,7 @@ class _ProfileState extends State<Profile> {
                   child: RaisedButtonCom(
                     title: "Edit Profile",
                     color: "F26882",
-                    fontSize: 18,
+                    fontSize: 14,
                     padding: 12,
                     radius: 10,
                     textColor: "FFFFFF",
@@ -102,7 +102,7 @@ class _ProfileState extends State<Profile> {
                   child: RaisedButtonCom(
                     title: title,
                     color: "FFFFFF",
-                    fontSize: 18,
+                    fontSize: 14,
                     padding: 14,
                     radius: 10,
                     textColor: "000000",
@@ -125,7 +125,7 @@ class _ProfileState extends State<Profile> {
             child: RaisedButtonCom(
               title: "Change password",
               color: "FFFFFF",
-              fontSize: 16,
+              fontSize: 14,
               padding: 14,
               radius: 10,
               textColor: "000000",

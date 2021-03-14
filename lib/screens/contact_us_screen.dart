@@ -22,7 +22,7 @@ class _ContactUsState extends State<ContactUs> {
             height: 50,
           ),
           TextComponent(
-            fontSize: 18,
+            fontSize: 14,
             textColor: "000000",
             title: "Contact Us",
             weight: FontWeight.w700,

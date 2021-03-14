@@ -55,7 +55,7 @@ class OrderStatus extends StatelessWidget {
           width: 15,
         ),
         TextComponent(
-          fontSize: 16,
+          fontSize: 14,
           textColor: "000000",
           title: title,
           weight: FontWeight.w700,

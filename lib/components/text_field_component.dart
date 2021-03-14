@@ -22,6 +22,14 @@ class TextFieldComponent extends StatelessWidget {
     return TextFormField(
       maxLines: lines,
       decoration: new InputDecoration(
+        disabledBorder: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(borderRadius),
+          borderSide: new BorderSide(color: Colors.black, width: 2),
+        ),
+        enabledBorder: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(borderRadius),
+          borderSide: new BorderSide(color: Colors.black, width: 2),
+        ),
         focusColor: Colors.black,
         labelText: label,
         fillColor: Colors.black,

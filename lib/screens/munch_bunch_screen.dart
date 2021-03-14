@@ -31,13 +31,13 @@ class _MunchBunchState extends State<MunchBunch> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextComponent(
-                fontSize: 18,
+                fontSize: 14,
                 textColor: "F26882",
                 title: "Platinum VIP ",
                 weight: FontWeight.w700,
               ),
               TextComponent(
-                fontSize: 18,
+                fontSize: 14,
                 textColor: "000000",
                 title: "Membership",
                 weight: FontWeight.w700,
@@ -48,7 +48,7 @@ class _MunchBunchState extends State<MunchBunch> {
             height: 10,
           ),
           TextComponent(
-            fontSize: 18,
+            fontSize: 14,
             textColor: "000000",
             title: "68392 Points",
             weight: FontWeight.w700,
@@ -66,7 +66,7 @@ class _MunchBunchState extends State<MunchBunch> {
                 child: Center(
                   child: TextComponent(
                     align: TextAlign.start,
-                    fontSize: 16,
+                    fontSize: 14,
                     weight: FontWeight.w600,
                     textColor: "FFFFFF",
                     title: "0 of 60000",
@@ -74,7 +74,7 @@ class _MunchBunchState extends State<MunchBunch> {
                 ),
               ),
               TextComponent(
-                fontSize: 18,
+                fontSize: 14,
                 textColor: "000000",
                 title: "Next Level",
                 weight: FontWeight.w600,
@@ -91,7 +91,7 @@ class _MunchBunchState extends State<MunchBunch> {
             title: "View Operations",
             color: "FFFFFF",
             width: 250,
-            fontSize: 18,
+            fontSize: 14,
             padding: 10,
             radius: 15,
             textColor: "000000",
@@ -116,7 +116,7 @@ class _MunchBunchState extends State<MunchBunch> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextComponent(
-                  fontSize: 18,
+                  fontSize: 14,
                   textColor: "000000",
                   title: "Points can be redeem",
                   weight: FontWeight.w700,

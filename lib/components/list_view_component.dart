@@ -46,7 +46,7 @@ class _ListViewComponentState extends State<ListViewComponent> {
                       style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                       )),
                     ),

@@ -16,6 +16,7 @@ class VerticalListView extends StatelessWidget {
       child: GridView.count(
         crossAxisCount: 2,
         childAspectRatio: 0.8,
+        padding: EdgeInsets.all(0.0),
         physics: AlwaysScrollableScrollPhysics(),
         shrinkWrap: true,
         children: List.generate(
@@ -42,14 +43,15 @@ class VerticalListView extends StatelessWidget {
                     ),
                     SizedBox(
                       child: TextComponent(
-                        fontSize: 16,
+                        fontSize: 14,
                         textColor: "000000",
                         title: "Seasonal Cake",
                       ),
                       height: 30,
                     ),
                     GestureDetector(
-                      onTap: () => {Navigator.pushNamed(context, mItemViewScreen)},
+                      onTap: () =>
+                          {Navigator.pushNamed(context, mItemViewScreen)},
                       child: RaisedButtonCom(
                         width: MediaQuery.of(context).size.width * 0.35,
                         height: 35,
@@ -59,6 +61,7 @@ class VerticalListView extends StatelessWidget {
                         borderWidth: 2,
                         padding: 2,
                         radius: 12,
+                        textAlign: null,
                         textColor: "000000",
                         title: getTranslated(context, "mainPageByNowButton"),
                       ),

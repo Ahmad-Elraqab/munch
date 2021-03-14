@@ -15,6 +15,7 @@ class RaisedButtonCom extends StatefulWidget {
   FontWeight fontWieght;
   double height;
   double width;
+  TextAlign textAlign;
 
   RaisedButtonCom({
     this.title,
@@ -28,6 +29,7 @@ class RaisedButtonCom extends StatefulWidget {
     this.fontWieght = FontWeight.bold,
     this.height,
     this.width,
+    this.textAlign = TextAlign.center,
   });
 
   @override
@@ -47,14 +49,23 @@ class _RaisedButtonComState extends State<RaisedButtonCom> {
         border: Border.all(
             color: HexColor(widget.borderColor), width: widget.borderWidth),
       ),
-      child: Center(
-        child: TextComponent(
-          fontSize: widget.fontSize,
-          textColor: widget.textColor,
-          title: widget.title,
-          weight: widget.fontWieght,
-        ),
-      ),
+      child: widget.textAlign != null
+          ? TextComponent(
+              fontSize: widget.fontSize,
+              textColor: widget.textColor,
+              title: widget.title,
+              weight: widget.fontWieght,
+              align: widget.textAlign,
+            )
+          : Center(
+              child: TextComponent(
+                fontSize: widget.fontSize,
+                textColor: widget.textColor,
+                title: widget.title,
+                weight: widget.fontWieght,
+                align: widget.textAlign,
+              ),
+            ),
     );
   }
 }

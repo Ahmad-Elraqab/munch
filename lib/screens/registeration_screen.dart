@@ -49,7 +49,7 @@ class _SignUpState extends State<SignUp> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "login"),
                             color: "FFFFFF",
-                            fontSize: 18,
+                            fontSize: 14,
                             padding: 14,
                             radius: 10,
                             textColor: "000000",
@@ -67,7 +67,7 @@ class _SignUpState extends State<SignUp> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "newUser"),
                             color: "66CDAA",
-                            fontSize: 18,
+                            fontSize: 14,
                             padding: 14,
                             radius: 10,
                             textColor: "FFFFFF",
@@ -140,7 +140,7 @@ class _SignUpState extends State<SignUp> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "newUser"),
                             color: "F26882",
-                            fontSize: 18,
+                            fontSize: 14,
                             padding: 20,
                             radius: 30,
                             textColor: "FFFFFF",

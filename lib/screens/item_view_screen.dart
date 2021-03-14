@@ -55,7 +55,7 @@ class _ItemViewScreenState extends State<ItemViewScreen>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextComponent(
-                          fontSize: 18,
+                          fontSize: 14,
                           textColor: "000000",
                           title: "Red velvet",
                           weight: FontWeight.w700,
@@ -81,7 +81,7 @@ class _ItemViewScreenState extends State<ItemViewScreen>
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextComponent(
-                          fontSize: 16,
+                          fontSize: 14,
                           textColor: "F26882",
                           title: "209 (SAR)",
                         )
@@ -141,7 +141,7 @@ class _ItemViewScreenState extends State<ItemViewScreen>
       builder: (context) {
         return AlertDialog(
           title: TextComponent(
-            fontSize: 16,
+            fontSize: 14,
             weight: FontWeight.w700,
             textColor: "000000",
             title: getTranslated(context, "HowMany"),

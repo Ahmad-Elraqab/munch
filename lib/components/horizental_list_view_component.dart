@@ -32,7 +32,7 @@ class DirectHorizentalListView extends StatelessWidget {
                     ),
                   ),
                   TextComponent(
-                    fontSize: 16,
+                    fontSize: 14,
                     textColor: "000000",
                     title: "Carrot Cake",
                     weight: FontWeight.w700,

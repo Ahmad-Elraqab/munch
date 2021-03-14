@@ -5,6 +5,7 @@ import 'package:munch_app/components/custom_app_bar.dart';
 import 'package:munch_app/providers/user_provider.dart';
 import 'package:munch_app/screens/about_us_screen.dart';
 import 'package:munch_app/screens/category_screen.dart';
+import 'package:munch_app/screens/check_out_screen.dart';
 import 'package:munch_app/screens/contact_us_screen.dart';
 import 'package:munch_app/screens/item_view_screen.dart';
 import 'package:munch_app/screens/cart_screen.dart';
@@ -97,6 +98,9 @@ class _AppState extends State<App> {
       case mOrdersHistory:
         return OrderHistory();
         break;
+      case mCheckout:
+        return Checkout();
+        break;
     }
   }
 
@@ -120,9 +124,9 @@ class _AppState extends State<App> {
                     height: 70,
                   ),
                   MediaQuery(
-                      data:
-                          MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                      child: callPage(widget.currentIndex)),
+                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                    child: Container(child: callPage(widget.currentIndex)),
+                  ),
                 ],
               ),
             ),
@@ -159,20 +163,20 @@ class _AppState extends State<App> {
                     Navigator.of(context).pushReplacementNamed(mProfileScreen),
                 child: TextComponent(
                     title: getTranslated(context, "DrawerMyAccount"),
-                    fontSize: 18,
+                    fontSize: 14,
                     textColor: "000000"),
               ),
             ),
             ListTile(
               title: TextComponent(
                   title: getTranslated(context, "DrawerMyAddresses"),
-                  fontSize: 18,
+                  fontSize: 14,
                   textColor: "000000"),
             ),
             ListTile(
               title: TextComponent(
                   title: getTranslated(context, "DrawerStoreLocation"),
-                  fontSize: 18,
+                  fontSize: 14,
                   textColor: "000000"),
             ),
             ListTile(
@@ -181,7 +185,7 @@ class _AppState extends State<App> {
                     Navigator.of(context).pushReplacementNamed(mAboutUs),
                 child: TextComponent(
                     title: getTranslated(context, "DrawerAboutUs"),
-                    fontSize: 18,
+                    fontSize: 14,
                     textColor: "000000"),
               ),
             ),
@@ -191,7 +195,7 @@ class _AppState extends State<App> {
                     Navigator.of(context).pushReplacementNamed(mContactUs),
                 child: TextComponent(
                     title: getTranslated(context, "DrawerContactUs"),
-                    fontSize: 18,
+                    fontSize: 14,
                     textColor: "000000"),
               ),
             ),
@@ -207,13 +211,13 @@ class _AppState extends State<App> {
                     ? ListTile(
                         title: TextComponent(
                             title: getTranslated(context, "DrawerLogout"),
-                            fontSize: 18,
+                            fontSize: 14,
                             textColor: "000000"),
                       )
                     : ListTile(
                         title: TextComponent(
                             title: getTranslated(context, "DrawerLogin"),
-                            fontSize: 18,
+                            fontSize: 14,
                             textColor: "000000"),
                       )),
             Row(
@@ -230,7 +234,7 @@ class _AppState extends State<App> {
                       borderColor: "000000",
                       borderWidth: 2,
                       color: "FFFFFF",
-                      fontSize: 16,
+                      fontSize: 14,
                       padding: 10,
                       radius: 10,
                       textColor: "000000",
@@ -354,7 +358,7 @@ Future buildShowDialog(BuildContext context) {
             ),
           ),
           child: TextComponent(
-            fontSize: 16,
+            fontSize: 14,
             textColor: "FFFFFF",
             title: getTranslated(context, "chooseCity"),
           ),
