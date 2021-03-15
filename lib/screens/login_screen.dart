@@ -42,6 +42,7 @@ class _LoginState extends State<Login> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "login"),
                             color: "66CDAA",
+                            textAlign: null,
                             fontSize: 14,
                             padding: 14,
                             radius: 10,
@@ -70,6 +71,7 @@ class _LoginState extends State<Login> {
                             color: "FFFFFF",
                             fontSize: 14,
                             padding: 14,
+                            textAlign: null,
                             radius: 10,
                             textColor: "000000",
                             borderColor: "000000",
@@ -157,6 +159,7 @@ class _LoginState extends State<Login> {
                           child: RaisedButtonCom(
                             title: getTranslated(context, "login"),
                             color: "F26882",
+                            textAlign: null,
                             fontSize: 14,
                             padding: 20,
                             radius: 30,

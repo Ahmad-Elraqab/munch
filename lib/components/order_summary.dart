@@ -74,6 +74,7 @@ class OrderSummary extends StatelessWidget {
                       fontSize: 14,
                       padding: 0,
                       radius: 0,
+                      textAlign: null,
                       textColor: "F26882",
                       borderColor: "000FFFF",
                       borderWidth: 0,

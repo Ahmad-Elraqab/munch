@@ -47,7 +47,7 @@ class DirectHorizentalListView extends StatelessWidget {
                     weight: FontWeight.w700,
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 7,
                   ),
                   Row(
                     children: [
@@ -60,6 +60,7 @@ class DirectHorizentalListView extends StatelessWidget {
                             fontSize: 14,
                             padding: 5,
                             radius: 10,
+                            textAlign: null,
                             textColor: "000000",
                             borderColor: "000000",
                             borderWidth: 2,

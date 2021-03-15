@@ -63,6 +63,7 @@ class _AboutUsState extends State<AboutUs> {
               borderColor: "000000",
               color: "00FFFFF",
               borderWidth: 2,
+              textAlign: null,
               fontSize: 14,
               padding: 12,
               radius: 15,

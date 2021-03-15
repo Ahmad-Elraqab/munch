@@ -112,6 +112,7 @@ class CheckoutState extends State<Checkout> {
                       borderColor: "F26882",
                       color: "F26882",
                       fontSize: 14,
+                      textAlign: null,
                       borderWidth: 0,
                       radius: 7,
                       width: MediaQuery.of(context).size.width * 0.5,

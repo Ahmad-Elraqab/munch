@@ -91,6 +91,7 @@ class _MunchBunchState extends State<MunchBunch> {
             title: "View Operations",
             color: "FFFFFF",
             width: 250,
+            textAlign: null,
             fontSize: 14,
             padding: 10,
             radius: 15,
@@ -139,7 +140,6 @@ class _MunchBunchState extends State<MunchBunch> {
             title: "Replace in store",
             weight: FontWeight.w600,
           ),
-
           TextComponent(
             fontSize: 14,
             textColor: "000000",

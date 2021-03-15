@@ -65,6 +65,7 @@ class _ListViewComponentState extends State<ListViewComponent> {
                               fontSize: 14,
                               padding: 8,
                               radius: 10,
+                              textAlign: null,
                               textColor: "000000",
                               borderColor: "000000",
                               borderWidth: 2,

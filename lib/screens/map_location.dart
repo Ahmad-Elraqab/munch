@@ -24,7 +24,8 @@ class MapLocationState extends State<MapLocation> {
 
   void setCustomMapPin() async {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 1), 'lib/assets/maps-and-flags.png');
+        ImageConfiguration(devicePixelRatio: 1),
+        'lib/assets/maps-and-flags.png');
   }
 
   LatLng pinPosition = LatLng(13.0, 13.0);
@@ -86,6 +87,7 @@ class MapLocationState extends State<MapLocation> {
               title: "Select",
               color: "F26882",
               fontSize: 14,
+              textAlign: TextAlign.center,
               padding: 10,
               radius: 10,
               textColor: "FFFFFF",

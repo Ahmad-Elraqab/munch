@@ -66,6 +66,7 @@ class _ItemViewScreenState extends State<ItemViewScreen>
                             width: MediaQuery.of(context).size.width * 0.35,
                             height: 35,
                             borderColor: "000000",
+                            textAlign: null,
                             color: "FFFFFF",
                             fontSize: 14,
                             borderWidth: 2,
@@ -224,6 +225,7 @@ class _ItemViewScreenState extends State<ItemViewScreen>
                     height: 35,
                     borderColor: "000000",
                     color: "FFFFFF",
+                    textAlign: null,
                     fontSize: 14,
                     borderWidth: 2,
                     padding: 2,
@@ -242,4 +244,3 @@ class _ItemViewScreenState extends State<ItemViewScreen>
     );
   }
 }
-

@@ -238,6 +238,7 @@ class _AppState extends State<App> {
                       fontSize: 14,
                       padding: 10,
                       radius: 10,
+                      textAlign: null,
                       textColor: "000000",
                       title: getTranslated(context, "DrawerChangeLanguage"),
                     ),

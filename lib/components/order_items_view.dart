@@ -71,6 +71,7 @@ class OrderItemsView extends StatelessWidget {
                             height: 20,
                             fontSize: 14,
                             padding: 0,
+                            textAlign: null,
                             radius: 0,
                             textColor: "F26882",
                             title: "delete",
