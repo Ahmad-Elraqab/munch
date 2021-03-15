@@ -228,7 +228,8 @@ class _AppState extends State<App> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Provider.of<UiProvider>(context).changeLanguage();
+                      Provider.of<UiProvider>(context, listen: false)
+                          .changeLanguage();
                     },
                     child: RaisedButtonCom(
                       borderColor: "000000",
