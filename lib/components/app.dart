@@ -4,6 +4,7 @@ import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
 import 'package:munch_app/providers/user_provider.dart';
 import 'package:munch_app/screens/about_us_screen.dart';
+import 'package:munch_app/screens/address_screen.dart';
 import 'package:munch_app/screens/category_screen.dart';
 import 'package:munch_app/screens/check_out_screen.dart';
 import 'package:munch_app/screens/contact_us_screen.dart';
@@ -101,6 +102,9 @@ class _AppState extends State<App> {
       case mCheckout:
         return Checkout();
         break;
+      case mAddresses:
+        return Addresses();
+        break;
     }
   }
 
@@ -168,10 +172,14 @@ class _AppState extends State<App> {
               ),
             ),
             ListTile(
-              title: TextComponent(
-                  title: getTranslated(context, "DrawerMyAddresses"),
-                  fontSize: 14,
-                  textColor: "000000"),
+              title: GestureDetector(
+                onTap: () =>
+                    Navigator.of(context).pushReplacementNamed(mAddresses),
+                child: TextComponent(
+                    title: getTranslated(context, "DrawerMyAddresses"),
+                    fontSize: 14,
+                    textColor: "000000"),
+              ),
             ),
             ListTile(
               title: TextComponent(

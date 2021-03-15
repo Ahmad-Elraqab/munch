@@ -16,3 +16,4 @@ const String mContactUs = "/contact-us";
 const String mAboutUs = "/about-us";
 const String mOrdersHistory = "/orders-history";
 const String mCheckout = "/orders-checkout";
+const String mAddresses = "/my-addresses";
