@@ -30,16 +30,17 @@ dependencies:
   google_fonts: ^1.1.2
   google_maps_flutter: ^0.5.25+3
   http: ^0.12.0+1
-  json_serializable: ^3.3.0
+  json_serializable: any
   location: ^3.0.0
+  flutter_riverpod: any
+  integration_test: any
   flutter_localizations:
     sdk: flutter
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
+  
   pedantic: ^1.9.0
   build_runner: ^1.10.0
   flutter_native_splash: ^0.2.8
