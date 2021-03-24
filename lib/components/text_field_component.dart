@@ -8,12 +8,14 @@ class TextFieldComponent extends StatelessWidget {
   double borderRadius;
   Provider provider;
   int lines;
+  double fontSize;
 
   TextFieldComponent({
     this.borderRadius,
     this.label,
     this.provider,
     this.lines = 1,
+    this.fontSize = 16,
     Key key,
   }) : super(key: key);
 
@@ -32,6 +34,7 @@ class TextFieldComponent extends StatelessWidget {
         ),
         focusColor: Colors.black,
         labelText: label,
+        labelStyle: TextStyle(fontSize: fontSize),
         fillColor: Colors.black,
         border: new OutlineInputBorder(
           borderRadius: new BorderRadius.circular(borderRadius),

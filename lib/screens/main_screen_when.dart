@@ -99,25 +99,7 @@ class MainScreenWhen extends StatelessWidget {
               ),
               Divider(
                 color: Colors.grey,
-                thickness: 2,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 16.0, top: 16, right: 16.0),
-                child: Row(
-                  children: [
-                    Text(
-                      getTranslated(context, "mainPageRecommendedProducts"),
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                thickness: 0,
               ),
               Padding(
                 padding:

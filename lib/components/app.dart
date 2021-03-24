@@ -16,6 +16,7 @@ import 'package:munch_app/screens/map_location.dart';
 import 'package:munch_app/screens/munch_bunch_screen.dart';
 import 'package:munch_app/screens/orders_history_screen.dart';
 import 'package:munch_app/screens/profile_screen.dart';
+import 'package:munch_app/screens/registeration_screen.dart';
 import 'package:munch_app/screens/returning_user_screen.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/screens/main_screen.dart';
@@ -46,7 +47,7 @@ class _AppState extends State<App> {
   Widget callPage(index) {
     switch (index) {
       case mLandingScreen:
-        return ReturningUser();
+        return MainScreen();
         break;
       case "0":
         return CategoryList();
@@ -68,9 +69,6 @@ class _AppState extends State<App> {
         break;
       case mMainScreen:
         return MainScreen();
-        break;
-      case mLoginScreen:
-        return Login();
         break;
       case mMaps:
         return MapLocation();
@@ -212,8 +210,7 @@ class _AppState extends State<App> {
             ),
             GestureDetector(
                 onTap: () {
-                  Provider.of<UiProvider>(context).changeState();
-                  // Navigator.pushReplacementNamed(context, mLoginScreen);
+                  buildShowDialogLogin(context);
                 },
                 child: Provider.of<UiProvider>(context).loggedIn == true
                     ? ListTile(
@@ -355,27 +352,98 @@ class _AppState extends State<App> {
   }
 }
 
-Future buildShowDialog(BuildContext context) {
+Future buildShowDialogLogin(BuildContext context) {
   return showDialog(
     context: context,
     builder: (context) {
+      bool login = true;
       return AlertDialog(
-        title: Container(
-          height: 50,
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 1, color: Colors.white),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        content: StatefulBuilder(
+          builder: (context, setState) => Container(
+            height: MediaQuery.of(context).size.height * 0.65,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => {
+                          setState(
+                            () => login = true,
+                          )
+                        },
+                        child: login
+                            ? RaisedButtonCom(
+                                title: getTranslated(context, "login"),
+                                color: "66CDAA",
+                                textAlign: null,
+                                fontSize: 12,
+                                padding: 12,
+                                radius: 10,
+                                textColor: "FFFFFF",
+                                borderColor: "66CDAA",
+                                borderWidth: 2,
+                              )
+                            : RaisedButtonCom(
+                                title: getTranslated(context, "login"),
+                                color: "FFFFFF",
+                                fontSize: 12,
+                                padding: 12,
+                                textAlign: null,
+                                radius: 10,
+                                textColor: "000000",
+                                borderColor: "000000",
+                                borderWidth: 2,
+                              ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => {
+                          setState(
+                            () => login = false,
+                          )
+                        },
+                        child: !login
+                            ? RaisedButtonCom(
+                                title: getTranslated(context, "newUser"),
+                                color: "66CDAA",
+                                fontSize: 12,
+                                padding: 12,
+                                textAlign: null,
+                                radius: 10,
+                                textColor: "FFFFFF",
+                                borderColor: "66CDAA",
+                                borderWidth: 2,
+                              )
+                            : RaisedButtonCom(
+                                title: getTranslated(context, "newUser"),
+                                color: "FFFFFF",
+                                fontSize: 12,
+                                padding: 12,
+                                textAlign: null,
+                                radius: 10,
+                                textColor: "000000",
+                                borderColor: "000000",
+                                borderWidth: 2,
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
+                login ? Login() : SignUp(),
+              ],
             ),
           ),
-          child: TextComponent(
-            fontSize: 14,
-            textColor: "FFFFFF",
-            title: getTranslated(context, "chooseCity"),
-          ),
         ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        content: Login(),
-        backgroundColor: HexColor("F26882"),
+        backgroundColor: Colors.white,
         actions: [],
       );
     },

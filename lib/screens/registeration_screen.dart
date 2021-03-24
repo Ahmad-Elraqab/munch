@@ -19,150 +19,105 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: MediaQuery(
-        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        child: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              padding: EdgeInsets.all(16),
-              height: height,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: height * 0.1,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => {
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (_, __, ___) => Login(),
-                                transitionDuration: Duration(seconds: 0),
-                              ),
-                            )
-                          },
-                          child: RaisedButtonCom(
-                            title: getTranslated(context, "login"),
-                            color: "FFFFFF",
-                            fontSize: 14,
-                            padding: 14,
-                            textAlign: null,
-                            radius: 10,
-                            textColor: "000000",
-                            borderColor: "000000",
-                            borderWidth: 2,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => {},
-                          child: RaisedButtonCom(
-                            title: getTranslated(context, "newUser"),
-                            color: "66CDAA",
-                            fontSize: 14,
-                            padding: 14,
-                            textAlign: null,
-                            radius: 10,
-                            textColor: "FFFFFF",
-                            borderColor: "66CDAA",
-                            borderWidth: 2,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.05,
-                  ),
-                  TextFieldComponent(
-                    borderRadius: 25,
+          return Container(
+            padding: EdgeInsets.all(16),
+            height: height * 0.55,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+
+                Container(
+                  height: 40,
+                  child: TextFieldComponent(
+                    fontSize: 12,
+                    borderRadius: 20,
                     label: getTranslated(context, "newUserFullPhoneNumber"),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFieldComponent(
-                    borderRadius: 25,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 40,
+                  child: TextFieldComponent(
+                    fontSize: 12,
+                    borderRadius: 20,
                     label: getTranslated(context, "newUserFullEmail"),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFieldComponent(
-                    borderRadius: 25,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 40,
+                  child: TextFieldComponent(
+                    fontSize: 12,
+                    borderRadius: 20,
                     label: getTranslated(
                         context, "loginInputFieldPasswordPlaceholder"),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFieldComponent(
-                    borderRadius: 25,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 40,
+                  child: TextFieldComponent(
+                    fontSize: 12,
+                    borderRadius: 20,
                     label: getTranslated(context, "RepeatPasswordPlaceholder"),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          icon: SvgPicture.asset("lib/assets/Icon_FB.svg"),
-                          onPressed: null),
-                      IconButton(
-                          icon: SvgPicture.asset("lib/assets/Icon_TW.svg"),
-                          onPressed: null),
-                      IconButton(
-                          icon: SvgPicture.asset("lib/assets/Icon_IG.svg"),
-                          onPressed: null),
-                    ],
-                  ),
-                  SizedBox(
-                    height: height * 0.04,
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: width * 0.1,
-                      ),
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () => {
-                            Navigator.pushReplacementNamed(context, mMainScreen)
-                          },
-                          child: RaisedButtonCom(
-                            title: getTranslated(context, "newUser"),
-                            color: "F26882",
-                            fontSize: 14,
-                            padding: 20,
-                            radius: 30,
-                            textAlign: null,
-                            textColor: "FFFFFF",
-                            borderColor: "F26882",
-                            borderWidth: 2,
-                          ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        icon: SvgPicture.asset("lib/assets/Icon_FB.svg"),
+                        onPressed: null),
+                    IconButton(
+                        icon: SvgPicture.asset("lib/assets/Icon_TW.svg"),
+                        onPressed: null),
+                    IconButton(
+                        icon: SvgPicture.asset("lib/assets/Icon_IG.svg"),
+                        onPressed: null),
+                  ],
+                ),
+                SizedBox(
+                  height: height * 0.04,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: width * 0.1,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => {
+                          Navigator.pushReplacementNamed(context, mMainScreen)
+                        },
+                        child: RaisedButtonCom(
+                          title: getTranslated(context, "newUser"),
+                          color: "F26882",
+                          fontSize: 12,
+                          padding: 12,
+                          radius: 30,
+                          textAlign: null,
+                          textColor: "FFFFFF",
+                          borderColor: "F26882",
+                          borderWidth: 2,
                         ),
                       ),
-                      SizedBox(
-                        width: width * 0.1,
-                      ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                    SizedBox(
+                      width: width * 0.1,
+                    ),
+                  ],
+                )
+              ],
             ),
-          ),
-        ),
-      ),
     );
   }
 }
