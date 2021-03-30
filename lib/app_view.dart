@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:munch_app/localization/demo_localization.dart';
-import 'package:provider/provider.dart';
 import 'models/router.dart';
 import 'package:munch_app/constants/constants.dart';
-import 'package:munch_app/providers/user_provider.dart';
 
+// ignore: must_be_immutable
 class AppView extends StatefulWidget {
   static void setLocale(BuildContext context, Locale locale) {
     _AppViewState state = context.findAncestorStateOfType<_AppViewState>();
@@ -29,46 +28,39 @@ class _AppViewState extends State<AppView> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => UiProvider(),
-        ),
+    return MaterialApp(
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ar', 'SA'),
       ],
-      child: MaterialApp(
-        supportedLocales: [
-          Locale('en', 'US'),
-          Locale('ar', 'SA'),
-        ],
-        localizationsDelegates: [
-          DemoLocalization.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        localeListResolutionCallback: (deviceLocale, supportedLocales) {
-          for (var locale in supportedLocales) {
-            for (var d in deviceLocale) {
-              if (locale.languageCode == d.languageCode &&
-                  locale.countryCode == d.countryCode) {
-                d.countryCode == "SA" ? isEnglish = false : isEnglish = true;
-                return d;
-              }
+      localizationsDelegates: [
+        DemoLocalization.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeListResolutionCallback: (deviceLocale, supportedLocales) {
+        for (var locale in supportedLocales) {
+          for (var d in deviceLocale) {
+            if (locale.languageCode == d.languageCode &&
+                locale.countryCode == d.countryCode) {
+              d.countryCode == "SA" ? isEnglish = false : isEnglish = true;
+              return d;
             }
           }
+        }
 
-          return supportedLocales.first;
-        },
-        locale: _locale,
-        theme: ThemeData(
-          primaryColor: Colors.pink,
-          accentColor: Colors.pink,
-          textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
-        ),
-        onGenerateRoute: RouterPage.generateRoute,
-        initialRoute: '/',
-        // initialRoute: kRestaurantHomePage,
+        return supportedLocales.first;
+      },
+      locale: _locale,
+      theme: ThemeData(
+        primaryColor: Colors.pink,
+        accentColor: Colors.pink,
+        textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
       ),
+      onGenerateRoute: RouterPage.generateRoute,
+      initialRoute: '/',
+      // initialRoute: kRestaurantHomePage,
     );
   }
 }

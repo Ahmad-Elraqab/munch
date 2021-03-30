@@ -15,6 +15,7 @@ class AddressesState extends State<Addresses>
   Set<Marker> _markers = {};
   LatLng pinPosition = LatLng(21.407104, 39.776688);
   Location _location = Location();
+  // ignore: unused_field
   GoogleMapController _controller;
 
   @override

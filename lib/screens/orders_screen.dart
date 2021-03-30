@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/components/order_summary.dart';
-import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/components/order_status_component.dart';
 import 'package:munch_app/constants/constants.dart';

@@ -4,6 +4,7 @@ import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/components/text_field_component.dart';
 
+// ignore: must_be_immutable
 class OrderDetailsComponent extends StatefulWidget {
   OrderDetailsComponent({
     Key key,

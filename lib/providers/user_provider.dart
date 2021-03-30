@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:munch_app/app_view.dart';
+import 'package:munch_app/dependency.dart';
 import 'package:munch_app/models/language.dart';
 import 'package:munch_app/constants/constants.dart';
+import 'package:munch_app/services/data_service.dart';
 
 class UiProvider with ChangeNotifier {
   BuildContext context;
   bool loggedIn = true;
+  final dataService = service<DataService>();
 
   void changeState() {
     if (loggedIn == false) {

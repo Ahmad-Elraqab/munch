@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
-import 'package:munch_app/providers/user_provider.dart';
 import 'package:munch_app/screens/about_us_screen.dart';
 import 'package:munch_app/screens/address_screen.dart';
 import 'package:munch_app/screens/category_screen.dart';
@@ -24,7 +23,6 @@ import 'package:munch_app/screens/orders_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/screens/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
-import 'package:provider/provider.dart';
 import '../constants/routes.dart';
 
 // ignore: must_be_immutable
@@ -143,7 +141,7 @@ class _AppState extends State<App> {
   }
 
   Drawer buildDrawer(BuildContext context) {
-    Provider.of<UiProvider>(context).context = context;
+    // Provider.of<UiProvider>(context).context = context;
     return Drawer(
       child: Container(
         // height: MediaQuery.of(context).size.height,
@@ -209,22 +207,24 @@ class _AppState extends State<App> {
               height: 30,
             ),
             GestureDetector(
-                onTap: () {
-                  buildShowDialogLogin(context);
-                },
-                child: Provider.of<UiProvider>(context).loggedIn == true
-                    ? ListTile(
-                        title: TextComponent(
-                            title: getTranslated(context, "DrawerLogout"),
-                            fontSize: 14,
-                            textColor: "000000"),
-                      )
-                    : ListTile(
-                        title: TextComponent(
-                            title: getTranslated(context, "DrawerLogin"),
-                            fontSize: 14,
-                            textColor: "000000"),
-                      )),
+              onTap: () {
+                buildShowDialogLogin(context);
+              },
+              // child: Provider.of<UiProvider>(context).loggedIn == true
+              // ? ListTile(
+              //     title: TextComponent(
+              //         title: getTranslated(context, "DrawerLogout"),
+              //         fontSize: 14,
+              //         textColor: "000000"),
+              //   )
+              // :
+              child: ListTile(
+                title: TextComponent(
+                    title: getTranslated(context, "DrawerLogin"),
+                    fontSize: 14,
+                    textColor: "000000"),
+              ),
+            ),
             Row(
               children: [
                 SizedBox(
@@ -233,8 +233,8 @@ class _AppState extends State<App> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Provider.of<UiProvider>(context, listen: false)
-                          .changeLanguage();
+                      // Provider.of<UiProvider>(context, listen: false)
+                          // .changeLanguage();
                     },
                     child: RaisedButtonCom(
                       borderColor: "000000",

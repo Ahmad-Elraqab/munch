@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:munch_app/constants/routes.dart';
 import 'package:munch_app/components/app.dart';
-import '../constants/routes.dart';
 
 class RouterPage {
   static Route<dynamic> generateRoute(RouteSettings settings) {

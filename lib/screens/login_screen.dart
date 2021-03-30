@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/components/text_field_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/constants/routes.dart';
-import 'package:munch_app/screens/registeration_screen.dart';
 import '../components/raised_button_component.dart';
 import '../components/text_component.dart';
 
