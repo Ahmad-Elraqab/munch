@@ -1,3 +1,5 @@
+import 'package:basic_utils/basic_utils.dart';
+
 class Picture {
   int displayOrder;
   String pictureAlt;
@@ -17,7 +19,8 @@ class Picture {
           displayOrder: json["DisplayOrder"],
           pictureAlt: json["PictureAlt"],
           pictureName: json["PictureName"],
-          picturePath: json["PicturePath"],
+          picturePath:
+              StringUtils.addCharAtPosition(json["PicturePath"], "live", 8),
           pictureTitle: json["PictureTitle"],
         );
   Map<String, dynamic> toJson() => {};

@@ -51,7 +51,9 @@ class _CategoryListState extends State<CategoryList> {
                               borderRadius: BorderRadius.circular(5),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                    "https://liveapi.munchbakery.com/munchimages/0353178_mini-cupcakes.png"),
+                                  data.data.value[index].picture.picturePath
+                                      .toString(),
+                                ),
                                 fit: BoxFit.contain,
                                 // ),
                               ),
