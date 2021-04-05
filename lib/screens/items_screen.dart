@@ -7,6 +7,7 @@ import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/constants/routes.dart';
 import 'package:munch_app/providers/cart_provider.dart';
 import 'package:munch_app/providers/future_provider.dart';
+import 'package:munch_app/providers/product_provider.dart';
 import 'package:munch_app/providers/user_provider.dart';
 
 class ItemScreen extends StatefulWidget {
@@ -19,81 +20,93 @@ class RrestaurantStatesList extends State<ItemScreen> {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.78,
-      child: GridView.count(
-        crossAxisCount: 2,
-        childAspectRatio: 0.8,
-        padding: EdgeInsets.all(0.0),
-        physics: AlwaysScrollableScrollPhysics(),
-        shrinkWrap: true,
-        children: List.generate(
-          10,
-          (index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 100,
-                child: Consumer(
-                  builder: (context, watch, child) {
-                    final data = watch(responseProvider);
-                    // final dataImg = watch(
-                    //   imageProvider(data.data.value[index].picture.picturePath),
-                    // );
-                    // print(data.data.value);
-                    return data.map(
-                      error: (_) => Text("Error"),
-                      loading: (_) => CircularProgressIndicator(),
-                      data: (value) => Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () =>
-                                {Navigator.pushNamed(context, mItemViewScreen)},
-                            child: Container(
-                              height: 150,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                      "https://static.wixstatic.com/media/a278f4_d207ce23d9d745f3b45a3ea78b14d060~mv2.png/v1/fill/w_232,h_232,usm_1.20_1.00_0.01/file.png"),
-                                  fit: BoxFit.contain,
+      child: Consumer(
+        builder: (context, watch, child) {
+          final data = watch(productsProvider);
+          final dataSet = watch(fetchProductProvider);
+          return data.map(
+            error: (_) => Text("Error"),
+            loading: (_) => Center(child: CircularProgressIndicator()),
+            data: (value) => GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: 0.8,
+              padding: EdgeInsets.all(0.0),
+              physics: AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
+              children: List.generate(
+                data.data.value.length,
+                (index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 100,
+                      child: data.map(
+                        error: (_) => Text("Error"),
+                        loading: (_) =>
+                            Center(child: CircularProgressIndicator()),
+                        data: (value) => Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {
+                                dataSet.selectedItem =
+                                    data.data.value[index].id;
+                                return Navigator.pushNamed(
+                                    context, mItemViewScreen);
+                              },
+                              child: Container(
+                                height: 150,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                      data.data.value[index].lstPictures == null
+                                          ? "https://static.wixstatic.com/media/a278f4_d207ce23d9d745f3b45a3ea78b14d060~mv2.png/v1/fill/w_232,h_232,usm_1.20_1.00_0.01/file.png"
+                                          : data.data.value[index].lstPictures
+                                              .picturePath
+                                              .toString(),
+                                    ),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            child: TextComponent(
-                              fontSize: 14,
-                              textColor: "000000",
-                              title: value.value[index].catName,
+                            SizedBox(
+                              child: TextComponent(
+                                fontSize: 14,
+                                textColor: "000000",
+                                title: value.value[index].name,
+                              ),
+                              height: 30,
                             ),
-                            height: 30,
-                          ),
-                          GestureDetector(
-                            onTap: () => buildShowDialog(context),
-                            child: RaisedButtonCom(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              height: 35,
-                              borderColor: "000000",
-                              color: "FFFFFF",
-                              fontSize: 14,
-                              borderWidth: 2,
-                              padding: 2,
-                              radius: 12,
-                              textAlign: null,
-                              textColor: "000000",
-                              title: getTranslated(context, "addToCartButton"),
+                            GestureDetector(
+                              onTap: () => buildShowDialog(context),
+                              child: RaisedButtonCom(
+                                width: MediaQuery.of(context).size.width * 0.35,
+                                height: 35,
+                                borderColor: "000000",
+                                color: "FFFFFF",
+                                fontSize: 14,
+                                borderWidth: 2,
+                                padding: 2,
+                                radius: 12,
+                                textAlign: null,
+                                textColor: "000000",
+                                title:
+                                    getTranslated(context, "addToCartButton"),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

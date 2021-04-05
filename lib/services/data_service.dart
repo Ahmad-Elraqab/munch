@@ -45,4 +45,31 @@ class DataService {
 
     return list;
   }
+
+  Future<List<Product>> getProduct() async {
+    final data = await http.get(
+        'https://api.munchbakery.com/MunchBakeryAPIService.svc/GetMunchBakeryProducts/1/-1/76/-1/-1');
+
+    final jsonData = jsonDecode(data.body) as List;
+    print(jsonData);
+
+    final List<Product> list = [];
+    jsonData.forEach(
+      (e) => list.add(
+        Product.fromJson(e),
+      ),
+    );
+
+    return list;
+  }
+
+  Future<Product> getProductDetailsServer(int id) async {
+    final data = await http.get(
+        'https://api.munchbakery.com/MunchBakeryAPIService.svc/GetMunchBakeryProductDetails/${id}/1');
+
+    final jsonData = jsonDecode(data.body);
+    print(jsonData);
+
+    return Product.fromJson(jsonData as Map<String, dynamic>);
+  }
 }

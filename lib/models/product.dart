@@ -1,15 +1,17 @@
+import 'dart:math';
+
 import 'package:munch_app/models/picture.dart';
 
 class Product {
   String description;
-  String displayOrder;
+  int displayOrder;
   int id;
   bool isCategory;
   String metaDescription;
   String metaKeyword;
   String metaTitle;
   String name;
-  int oldPrice;
+  double oldPrice;
   double price;
   String slug;
   Picture lstPictures;
@@ -40,8 +42,11 @@ class Product {
           oldPrice: json['OldPrice'],
           price: json['Price'],
           slug: json['Slug'],
-          lstPictures:
-              Picture.fromJson(json['lstPictures'] as Map<String, dynamic>),
+          lstPictures: json['lstPictures'].length == 0
+              ? null
+              : Picture.fromJson(
+                  json['lstPictures'][0] as Map<String, dynamic>,
+                ),
         );
   Map<String, dynamic> toJson() => {};
 }

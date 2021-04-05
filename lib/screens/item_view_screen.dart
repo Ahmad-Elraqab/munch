@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/components/horizental_list_view_component.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/constants/constants.dart';
+import 'package:munch_app/providers/product_provider.dart';
 
 class ItemViewScreen extends StatefulWidget {
   @override
@@ -31,82 +33,97 @@ class _ItemViewScreenState extends State<ItemViewScreen>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: MediaQuery.of(context).size.height / 2,
-          color: Colors.white,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                    padding: EdgeInsets.all(50.0),
-                    child: Center(
-                      child: Image(
-                        image: NetworkImage(
-                            "https://hsaa.hsobjects.com/h/menuitems/images/001/765/500/7dc3fb6c364fa160d3d32ec89194266b-size900.png"),
-                      ),
-                    )),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+        Consumer(
+          builder: (context, watch, child) {
+            final data = watch(productDetaislProvider);
+            return data.map(
+              error: (_) => Text("Error"),
+              loading: (_) => Center(child: CircularProgressIndicator()),
+              data: (value) => Container(
+                height: MediaQuery.of(context).size.height / 2,
+                color: Colors.white,
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextComponent(
-                          fontSize: 14,
-                          textColor: "000000",
-                          title: "Red velvet",
-                          weight: FontWeight.w700,
-                        ),
-                        GestureDetector(
-                          onTap: () => {buildShowDialog(context)},
-                          child: RaisedButtonCom(
-                            width: MediaQuery.of(context).size.width * 0.35,
-                            height: 35,
-                            borderColor: "000000",
-                            textAlign: null,
-                            color: "FFFFFF",
-                            fontSize: 14,
-                            borderWidth: 2,
-                            padding: 2,
-                            radius: 12,
-                            textColor: "000000",
-                            title: getTranslated(context, "addToCartButton"),
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                          padding: EdgeInsets.all(50.0),
+                          child: Center(
+                            child: Image(
+                              image: NetworkImage(
+                                data.data.value.lstPictures == null
+                                    ? "https://static.wixstatic.com/media/a278f4_d207ce23d9d745f3b45a3ea78b14d060~mv2.png/v1/fill/w_232,h_232,usm_1.20_1.00_0.01/file.png"
+                                    : data.data.value.lstPictures.picturePath
+                                        .toString(),
+                              ),
+                            ),
+                          )),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextComponent(
+                                fontSize: 14,
+                                textColor: "000000",
+                                title: data.data.value.name.toString(),
+                                weight: FontWeight.w700,
+                              ),
+                              GestureDetector(
+                                onTap: () => {buildShowDialog(context)},
+                                child: RaisedButtonCom(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.35,
+                                  height: 35,
+                                  borderColor: "000000",
+                                  textAlign: null,
+                                  color: "FFFFFF",
+                                  fontSize: 14,
+                                  borderWidth: 2,
+                                  padding: 2,
+                                  radius: 12,
+                                  textColor: "000000",
+                                  title:
+                                      getTranslated(context, "addToCartButton"),
+                                ),
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        TextComponent(
-                          fontSize: 14,
-                          textColor: "F26882",
-                          title: "209 (SAR)",
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextComponent(
-                      fontSize: 13,
-                      textColor: "000000",
-                      weight: FontWeight.normal,
-                      align: TextAlign.start,
-                      title:
-                          "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu odio ut sem nulla pharetra diam sit. Lorem ipsum dolor sit",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              TextComponent(
+                                fontSize: 14,
+                                textColor: "F26882",
+                                title:
+                                    "${data.data.value.price.toString()} (SAR)",
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          TextComponent(
+                            fontSize: 13,
+                            textColor: "000000",
+                            weight: FontWeight.normal,
+                            align: TextAlign.start,
+                            title: data.data.value.description.toString(),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            );
+          },
         ),
         Divider(
           thickness: 1,
