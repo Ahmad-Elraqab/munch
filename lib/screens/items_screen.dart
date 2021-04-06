@@ -8,7 +8,7 @@ import 'package:munch_app/constants/routes.dart';
 import 'package:munch_app/providers/cart_provider.dart';
 import 'package:munch_app/providers/future_provider.dart';
 import 'package:munch_app/providers/product_provider.dart';
-import 'package:munch_app/providers/user_provider.dart';
+import 'package:munch_app/providers/ui_provider.dart';
 
 class ItemScreen extends StatefulWidget {
   @override

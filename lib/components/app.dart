@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
+import 'package:munch_app/providers/ui_provider.dart';
 import 'package:munch_app/screens/about_us_screen.dart';
 import 'package:munch_app/screens/address_screen.dart';
 import 'package:munch_app/screens/category_screen.dart';
@@ -225,34 +227,36 @@ class _AppState extends State<App> {
                     textColor: "000000"),
               ),
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 50,
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      // Provider.of<UiProvider>(context, listen: false)
-                          // .changeLanguage();
-                    },
-                    child: RaisedButtonCom(
-                      borderColor: "000000",
-                      borderWidth: 2,
-                      color: "FFFFFF",
-                      fontSize: 14,
-                      padding: 10,
-                      radius: 10,
-                      textAlign: null,
-                      textColor: "000000",
-                      title: getTranslated(context, "DrawerChangeLanguage"),
+            Consumer(
+              builder: (context, watch, child) => Row(
+                children: [
+                  SizedBox(
+                    width: 50,
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        watch(uiProvider).changeLanguage(context);
+
+                      },
+                      child: RaisedButtonCom(
+                        borderColor: "000000",
+                        borderWidth: 2,
+                        color: "FFFFFF",
+                        fontSize: 14,
+                        padding: 10,
+                        radius: 10,
+                        textAlign: null,
+                        textColor: "000000",
+                        title: getTranslated(context, "DrawerChangeLanguage"),
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-              ],
+                  SizedBox(
+                    width: 50,
+                  ),
+                ],
+              ),
             )
           ],
         ),
