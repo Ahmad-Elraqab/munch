@@ -29,6 +29,7 @@ dependencies:
   flutter_svg: ^0.19.3
   basic_utils: ^1.5.0
   google_fonts: ^1.1.2
+  shared_preferences: ^2.0.5
   google_maps_flutter: ^0.5.25+3
   http: ^0.12.0+1
   json_serializable: any

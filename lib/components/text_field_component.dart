@@ -9,6 +9,7 @@ class TextFieldComponent extends StatelessWidget {
   Provider provider;
   int lines;
   double fontSize;
+  TextEditingController myController;
 
   TextFieldComponent({
     this.borderRadius,
@@ -16,6 +17,7 @@ class TextFieldComponent extends StatelessWidget {
     this.provider,
     this.lines = 1,
     this.fontSize = 16,
+    this.myController,
     Key key,
   }) : super(key: key);
 
@@ -42,17 +44,13 @@ class TextFieldComponent extends StatelessWidget {
         ),
         //fillColor: Colors.green
       ),
-      // validator: (val) {
-      //   if (val.length == 0) {
-      //     return "Email cannot be empty";
-      //   } else {
-      //     return null;
-      //   }
-      // },
-      // keyboardType: TextInputType.emailAddress,
-      // style: new TextStyle(
-      //   fontFamily: "Poppins",
-      // ),
+      controller: myController,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'required';
+        } else
+          return null;
+      },
     );
   }
 }

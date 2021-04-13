@@ -21,6 +21,12 @@ class ProductProvider extends ChangeNotifier {
 
     return product;
   }
+
+  Future<List<Product>> getRecommendedProducts() async {
+    final product = await data.getRecommendedProductsServer(1, 76, -1, -1, -1);
+
+    return product;
+  }
 }
 
 final fetchProductProvider = Provider((ref) => ProductProvider());
@@ -34,5 +40,11 @@ final productDetaislProvider = FutureProvider.autoDispose<Product>(
   (ref) async {
     final httpClient = ref.read(fetchProductProvider);
     return httpClient.getProductDetails();
+  },
+);
+final productRecommendedlProvider = FutureProvider.autoDispose<List<Product>>(
+  (ref) async {
+    final httpClient = ref.read(fetchProductProvider);
+    return httpClient.getRecommendedProducts();
   },
 );

@@ -11,18 +11,10 @@ final responseProvider = FutureProvider<List<Category>>(
   },
 );
 
-final fetchImageProvider = Provider((ref) => DataService());
-final imageProvider = FutureProvider.family<String, dynamic>(
-  (ref, url) async {
-    final httpClient = ref.read(fetchImageProvider);
-    return httpClient.fetchImage(url);
-  },
-);
-
 final fetchRecommendedItemsProvider = Provider((ref) => DataService());
 final itemsProvider = FutureProvider<List<Product>>(
   (ref) async {
-    final httpClient = ref.read(fetchImageProvider);
+    final httpClient = ref.read(fetchRecommendedItemsProvider);
     return httpClient.getRecommendedItems();
   },
 );

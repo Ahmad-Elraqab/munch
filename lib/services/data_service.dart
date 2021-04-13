@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:munch_app/models/Category.dart';
 import 'package:munch_app/models/product.dart';
+import 'package:munch_app/models/user.dart';
+import 'package:munch_app/providers/user_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DataService {
   Future<List<Category>> fetchCategory() async {
@@ -71,5 +74,63 @@ class DataService {
     print(jsonData);
 
     return Product.fromJson(jsonData as Map<String, dynamic>);
+  }
+
+  Future<List<Product>> getRecommendedProductsServer(int langId, int cityId,
+      int districtId, int zoneId, int customerGuid) async {
+    final data = await http.post(
+      'https://api.munchbakery.com/MunchBakeryAPIService.svc/GetMunchBakeryRecommendedProducts/',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        "langId": langId,
+        "CityId": cityId,
+        "DistrictId": districtId,
+        "ZoneId": zoneId,
+        "CustomerGuid": customerGuid,
+      }),
+    );
+    final jsonData = jsonDecode(data.body);
+
+    final jsonDataList =
+        jsonData['GetMunchBakeryRecommendedProductsResult'] as List;
+    print(jsonDataList);
+
+    final List<Product> list = [];
+    jsonDataList.forEach(
+      (e) => list.add(
+        Product.fromJson(e),
+      ),
+    );
+
+    return list;
+  }
+
+  Future<User> loginServer(
+    String username,
+    String password,
+  ) async {
+    final data = await http.post(
+      'https://api.munchbakery.com/MunchBakeryAPIService.svc/ValidateMunchBakeryLogin/',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(
+        {
+          "UserNameEmail": username,
+          "Password": password,
+          "OldGuestCustomerGuid": "",
+          "DeviceSourceType": "2",
+          "MobileTokenId": "token"
+        },
+      ),
+    );
+
+    final json = jsonDecode(data.body);
+
+    print(json);
+
+    return User.fromJson(json);
   }
 }

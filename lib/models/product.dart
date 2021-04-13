@@ -39,8 +39,8 @@ class Product {
           metaKeyword: json['MetaKeyword'],
           metaTitle: json['MetaTitle'],
           name: json['Name'],
-          oldPrice: json['OldPrice'],
-          price: json['Price'],
+          oldPrice: json['OldPrice'].toDouble(),
+          price: json['Price'].toDouble(),
           slug: json['Slug'],
           lstPictures: json['lstPictures'].length == 0
               ? null

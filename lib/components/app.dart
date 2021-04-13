@@ -25,6 +25,8 @@ import 'package:munch_app/screens/orders_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/screens/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
+import 'package:munch_app/providers/user_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/routes.dart';
 
 // ignore: must_be_immutable
@@ -145,120 +147,126 @@ class _AppState extends State<App> {
   Drawer buildDrawer(BuildContext context) {
     // Provider.of<UiProvider>(context).context = context;
     return Drawer(
-      child: Container(
-        // height: MediaQuery.of(context).size.height,
-        child: ListView(
-          children: [
-            DrawerHeader(
-              child: Image(
-                fit: BoxFit.contain,
-                image: NetworkImage(
-                    'https://pbs.twimg.com/profile_images/1327575747553267713/eRd8dNQ5.jpg'),
+      child: Consumer(
+        builder: (context, watch, child) => Container(
+          // height: MediaQuery.of(context).size.height,
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Image(
+                  fit: BoxFit.contain,
+                  image: NetworkImage(
+                      'https://pbs.twimg.com/profile_images/1327575747553267713/eRd8dNQ5.jpg'),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            ListTile(
-              title: GestureDetector(
-                onTap: () =>
-                    Navigator.of(context).pushReplacementNamed(mProfileScreen),
-                child: TextComponent(
-                    title: getTranslated(context, "DrawerMyAccount"),
-                    fontSize: 14,
-                    textColor: "000000"),
+              SizedBox(
+                height: 30,
               ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                onTap: () =>
-                    Navigator.of(context).pushReplacementNamed(mAddresses),
-                child: TextComponent(
-                    title: getTranslated(context, "DrawerMyAddresses"),
-                    fontSize: 14,
-                    textColor: "000000"),
+              ListTile(
+                title: GestureDetector(
+                  onTap: () async {
+                    await watch(setLoading).getSharedPrefrence() == true
+                        ? Navigator.of(context)
+                            .pushReplacementNamed(mProfileScreen)
+                        : buildShowDialogLogin(context);
+                  },
+                  child: TextComponent(
+                      title: getTranslated(context, "DrawerMyAccount"),
+                      fontSize: 14,
+                      textColor: "000000"),
+                ),
               ),
-            ),
-            ListTile(
-              title: TextComponent(
-                  title: getTranslated(context, "DrawerStoreLocation"),
-                  fontSize: 14,
-                  textColor: "000000"),
-            ),
-            ListTile(
-              title: GestureDetector(
-                onTap: () =>
-                    Navigator.of(context).pushReplacementNamed(mAboutUs),
-                child: TextComponent(
-                    title: getTranslated(context, "DrawerAboutUs"),
-                    fontSize: 14,
-                    textColor: "000000"),
+              ListTile(
+                title: GestureDetector(
+                  onTap: () async {
+                    await watch(setLoading).getSharedPrefrence() == true
+                        ? Navigator.of(context).pushReplacementNamed(mAddresses)
+                        : buildShowDialogLogin(context);
+                  },
+                  child: TextComponent(
+                      title: getTranslated(context, "DrawerMyAddresses"),
+                      fontSize: 14,
+                      textColor: "000000"),
+                ),
               ),
-            ),
-            ListTile(
-              title: GestureDetector(
-                onTap: () =>
-                    Navigator.of(context).pushReplacementNamed(mContactUs),
-                child: TextComponent(
-                    title: getTranslated(context, "DrawerContactUs"),
-                    fontSize: 14,
-                    textColor: "000000"),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            GestureDetector(
-              onTap: () {
-                buildShowDialogLogin(context);
-              },
-              // child: Provider.of<UiProvider>(context).loggedIn == true
-              // ? ListTile(
-              //     title: TextComponent(
-              //         title: getTranslated(context, "DrawerLogout"),
-              //         fontSize: 14,
-              //         textColor: "000000"),
-              //   )
-              // :
-              child: ListTile(
+              ListTile(
                 title: TextComponent(
-                    title: getTranslated(context, "DrawerLogin"),
+                    title: getTranslated(context, "DrawerStoreLocation"),
                     fontSize: 14,
                     textColor: "000000"),
               ),
-            ),
-            Consumer(
-              builder: (context, watch, child) => Row(
-                children: [
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        watch(uiProvider).changeLanguage(context);
-
-                      },
-                      child: RaisedButtonCom(
-                        borderColor: "000000",
-                        borderWidth: 2,
-                        color: "FFFFFF",
+              ListTile(
+                title: GestureDetector(
+                  onTap: () =>
+                      Navigator.of(context).pushReplacementNamed(mAboutUs),
+                  child: TextComponent(
+                      title: getTranslated(context, "DrawerAboutUs"),
+                      fontSize: 14,
+                      textColor: "000000"),
+                ),
+              ),
+              ListTile(
+                title: GestureDetector(
+                  onTap: () =>
+                      Navigator.of(context).pushReplacementNamed(mContactUs),
+                  child: TextComponent(
+                      title: getTranslated(context, "DrawerContactUs"),
+                      fontSize: 14,
+                      textColor: "000000"),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Consumer(builder: (context, watch, child) {
+                return GestureDetector(
+                  onTap: () async {
+                    await watch(setLoading).getSharedPrefrence() == true
+                        ? watch(setLoading).logout()
+                        : buildShowDialogLogin(context);
+                  },
+                  child: ListTile(
+                    title: TextComponent(
+                        title: watch(setLoading).getSharedPrefrence() == true
+                            ? getTranslated(context, "DrawerLogout")
+                            : getTranslated(context, "DrawerLogin"),
                         fontSize: 14,
-                        padding: 10,
-                        radius: 10,
-                        textAlign: null,
-                        textColor: "000000",
-                        title: getTranslated(context, "DrawerChangeLanguage"),
+                        textColor: "000000"),
+                  ),
+                );
+              }),
+              Consumer(
+                builder: (context, watch, child) => Row(
+                  children: [
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          watch(uiProvider).changeLanguage(context);
+                        },
+                        child: RaisedButtonCom(
+                          borderColor: "000000",
+                          borderWidth: 2,
+                          color: "FFFFFF",
+                          fontSize: 14,
+                          padding: 10,
+                          radius: 10,
+                          textAlign: null,
+                          textColor: "000000",
+                          title: getTranslated(context, "DrawerChangeLanguage"),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                ],
-              ),
-            )
-          ],
+                    SizedBox(
+                      width: 50,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -334,23 +342,30 @@ class _AppState extends State<App> {
     SvgPicture iconInactive,
     String title,
   }) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          widget.currentIndex = index.toString();
-        });
-      },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Container(
-              child: widget.currentIndex == index ? iconActive : iconInactive),
-          TextComponent(
-            fontSize: 12,
-            title: title,
-            textColor: widget.currentIndex == index ? 'F26882' : 'C7C7C7',
-          )
-        ],
+    return Consumer(
+      builder: (context, watch, child) => InkWell(
+        onTap: () async {
+          await watch(setLoading).getSharedPrefrence() == true ||
+                  index == "0" ||
+                  index == "3"
+              ? setState(() {
+                  widget.currentIndex = index.toString();
+                })
+              : buildShowDialogLogin(context);
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+                child:
+                    widget.currentIndex == index ? iconActive : iconInactive),
+            TextComponent(
+              fontSize: 12,
+              title: title,
+              textColor: widget.currentIndex == index ? 'F26882' : 'C7C7C7',
+            )
+          ],
+        ),
       ),
     );
   }
@@ -365,85 +380,92 @@ Future buildShowDialogLogin(BuildContext context) {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
+        insetPadding: EdgeInsets.all(0.0),
+        titlePadding: EdgeInsets.all(0.0),
+        buttonPadding: EdgeInsets.all(0.0),
+        actionsPadding: EdgeInsets.all(0.0),
+        contentPadding: EdgeInsets.only(left: 16.0, right: 16.0),
         content: StatefulBuilder(
-          builder: (context, setState) => Container(
-            height: MediaQuery.of(context).size.height * 0.65,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () => {
-                          setState(
-                            () => login = true,
-                          )
-                        },
-                        child: login
-                            ? RaisedButtonCom(
-                                title: getTranslated(context, "login"),
-                                color: "66CDAA",
-                                textAlign: null,
-                                fontSize: 12,
-                                padding: 12,
-                                radius: 10,
-                                textColor: "FFFFFF",
-                                borderColor: "66CDAA",
-                                borderWidth: 2,
-                              )
-                            : RaisedButtonCom(
-                                title: getTranslated(context, "login"),
-                                color: "FFFFFF",
-                                fontSize: 12,
-                                padding: 12,
-                                textAlign: null,
-                                radius: 10,
-                                textColor: "000000",
-                                borderColor: "000000",
-                                borderWidth: 2,
-                              ),
+          builder: (context, setState) => SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.65,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {
+                            setState(
+                              () => login = true,
+                            )
+                          },
+                          child: login
+                              ? RaisedButtonCom(
+                                  title: getTranslated(context, "login"),
+                                  color: "66CDAA",
+                                  textAlign: null,
+                                  fontSize: 12,
+                                  padding: 12,
+                                  radius: 10,
+                                  textColor: "FFFFFF",
+                                  borderColor: "66CDAA",
+                                  borderWidth: 2,
+                                )
+                              : RaisedButtonCom(
+                                  title: getTranslated(context, "login"),
+                                  color: "FFFFFF",
+                                  fontSize: 12,
+                                  padding: 12,
+                                  textAlign: null,
+                                  radius: 10,
+                                  textColor: "000000",
+                                  borderColor: "000000",
+                                  borderWidth: 2,
+                                ),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 30,
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () => {
-                          setState(
-                            () => login = false,
-                          )
-                        },
-                        child: !login
-                            ? RaisedButtonCom(
-                                title: getTranslated(context, "newUser"),
-                                color: "66CDAA",
-                                fontSize: 12,
-                                padding: 12,
-                                textAlign: null,
-                                radius: 10,
-                                textColor: "FFFFFF",
-                                borderColor: "66CDAA",
-                                borderWidth: 2,
-                              )
-                            : RaisedButtonCom(
-                                title: getTranslated(context, "newUser"),
-                                color: "FFFFFF",
-                                fontSize: 12,
-                                padding: 12,
-                                textAlign: null,
-                                radius: 10,
-                                textColor: "000000",
-                                borderColor: "000000",
-                                borderWidth: 2,
-                              ),
+                      SizedBox(
+                        width: 30,
                       ),
-                    ),
-                  ],
-                ),
-                login ? Login() : SignUp(),
-              ],
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => {
+                            setState(
+                              () => login = false,
+                            )
+                          },
+                          child: !login
+                              ? RaisedButtonCom(
+                                  title: getTranslated(context, "newUser"),
+                                  color: "66CDAA",
+                                  fontSize: 12,
+                                  padding: 12,
+                                  textAlign: null,
+                                  radius: 10,
+                                  textColor: "FFFFFF",
+                                  borderColor: "66CDAA",
+                                  borderWidth: 2,
+                                )
+                              : RaisedButtonCom(
+                                  title: getTranslated(context, "newUser"),
+                                  color: "FFFFFF",
+                                  fontSize: 12,
+                                  padding: 12,
+                                  textAlign: null,
+                                  radius: 10,
+                                  textColor: "000000",
+                                  borderColor: "000000",
+                                  borderWidth: 2,
+                                ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  login ? Login() : SignUp(),
+                ],
+              ),
             ),
           ),
         ),
@@ -451,5 +473,5 @@ Future buildShowDialogLogin(BuildContext context) {
         actions: [],
       );
     },
-  );
+  ).then((value) => context.read(setLoading).clearBoard());
 }

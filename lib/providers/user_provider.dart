@@ -1,8 +1,73 @@
-
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart';
+import 'package:munch_app/models/user.dart';
+import 'package:munch_app/services/data_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class UserProvider with ChangeNotifier{
+import '../dependency.dart';
 
+class UserProvider extends ChangeNotifier {
+  bool isLoading = false;
+  bool isError = false;
+  String title;
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  TextEditingController rememeberController = new TextEditingController();
+  final data = service<DataService>();
+  User user;
 
+  Future<void> login() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    user =
+        await data.loginServer(emailController.text, passwordController.text);
+
+    if (user.loginStatus == 1) {
+      emailController.text = "";
+      passwordController.text = "";
+      isError = false;
+      isLoading = false;
+      prefs.setString("user_id", user.customerGuid);
+      prefs.setBool("isAuth", true);
+
+      notifyListeners();
+    } else {
+      isError = true;
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  void setLoading() {
+    isLoading = true;
+    notifyListeners();
+  }
+
+  void clearBoard() {
+    emailController.text = "";
+    passwordController.text = "";
+    isError = false;
+  }
+
+  void logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
+
+  Future<bool> getSharedPrefrence() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return prefs.getBool("isAuth");
+  }
 }
+
+final userProvider = Provider((ref) => UserProvider());
+final setLoading = ChangeNotifierProvider((ref) => UserProvider());
+
+final loginProvider = FutureProvider.autoDispose(
+  (ref) async {
+    final httpClient = ref.watch(setLoading);
+    await httpClient.login();
+  },
+);
