@@ -131,7 +131,7 @@ class _LoginState extends State<Login> {
                               } else {
                                 watch(setLoading).setLoading();
 
-                                watch(loginProvider);
+                                watch(loginProvider(context));
                               }
                             },
                             child: RaisedButtonCom(

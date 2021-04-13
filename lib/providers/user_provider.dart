@@ -17,7 +17,7 @@ class UserProvider extends ChangeNotifier {
   final data = service<DataService>();
   User user;
 
-  Future<void> login() async {
+  Future<void> login(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     user =
@@ -30,8 +30,7 @@ class UserProvider extends ChangeNotifier {
       isLoading = false;
       prefs.setString("user_id", user.customerGuid);
       prefs.setBool("isAuth", true);
-
-      notifyListeners();
+      return Navigator.pop(context);
     } else {
       isError = true;
       isLoading = false;
@@ -65,9 +64,9 @@ class UserProvider extends ChangeNotifier {
 final userProvider = Provider((ref) => UserProvider());
 final setLoading = ChangeNotifierProvider((ref) => UserProvider());
 
-final loginProvider = FutureProvider.autoDispose(
-  (ref) async {
+final loginProvider = FutureProvider.autoDispose.family(
+  (ref, con) async {
     final httpClient = ref.watch(setLoading);
-    await httpClient.login();
+    await httpClient.login(con);
   },
 );
