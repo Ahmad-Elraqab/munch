@@ -3,30 +3,30 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/components/custom_app_bar.dart';
-import 'package:munch_app/providers/ui_provider.dart';
-import 'package:munch_app/screens/about_us_screen.dart';
-import 'package:munch_app/screens/address_screen.dart';
-import 'package:munch_app/screens/category_screen.dart';
-import 'package:munch_app/screens/check_out_screen.dart';
-import 'package:munch_app/screens/contact_us_screen.dart';
-import 'package:munch_app/screens/item_view_screen.dart';
-import 'package:munch_app/screens/cart_screen.dart';
-import 'package:munch_app/screens/items_screen.dart';
-import 'package:munch_app/screens/login_screen.dart';
-import 'package:munch_app/screens/map_location.dart';
-import 'package:munch_app/screens/munch_bunch_screen.dart';
-import 'package:munch_app/screens/orders_history_screen.dart';
-import 'package:munch_app/screens/profile_screen.dart';
-import 'package:munch_app/screens/registeration_screen.dart';
-import 'package:munch_app/screens/returning_user_screen.dart';
+import 'package:munch_app/screens/about_us/about_us_screen.dart';
+import 'package:munch_app/screens/address/address_screen.dart';
+import 'package:munch_app/screens/authentication/login/login_screen.dart';
+import 'package:munch_app/screens/authentication/signup/registeration_screen.dart';
+import 'package:munch_app/screens/cart/checkout/check_out_screen.dart';
+import 'package:munch_app/screens/category/category_screen.dart';
+import 'package:munch_app/screens/contact_us/contact_us_screen.dart';
+import 'package:munch_app/screens/cart/cart_screen.dart';
+import 'package:munch_app/screens/items/item_view/item_view_screen.dart';
+import 'package:munch_app/screens/items/items_screen.dart';
+import 'package:munch_app/screens/map_location/map_location.dart';
+import 'package:munch_app/screens/munch_bunch/munch_bunch_screen.dart';
+import 'package:munch_app/screens/orders_history/orders_history_screen.dart';
+import 'package:munch_app/screens/profile/profile_screen.dart';
+import 'package:munch_app/screens/profile/profile_viewmodel.dart';
+import 'package:munch_app/screens/returned_user/returning_user_screen.dart';
 import 'package:munch_app/components/text_component.dart';
-import 'package:munch_app/screens/main_screen.dart';
-import 'package:munch_app/screens/orders_screen.dart';
+import 'package:munch_app/screens/main/main_screen.dart';
+import 'package:munch_app/screens/orders/orders_screen.dart';
 import 'package:munch_app/components/raised_button_component.dart';
-import 'package:munch_app/screens/main_screen_when.dart';
+import 'package:munch_app/screens/main_when/main_screen_when.dart';
 import 'package:munch_app/constants/routes.dart';
 import 'package:munch_app/providers/user_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:munch_app/screens/view.dart';
 import '../constants/routes.dart';
 
 // ignore: must_be_immutable
@@ -111,7 +111,6 @@ class _AppState extends State<App> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    // final dataService = service<DataService>();
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
@@ -147,105 +146,87 @@ class _AppState extends State<App> {
   Drawer buildDrawer(BuildContext context) {
     // Provider.of<UiProvider>(context).context = context;
     return Drawer(
-      child: Consumer(
-        builder: (context, watch, child) => Container(
-          // height: MediaQuery.of(context).size.height,
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Image(
-                  fit: BoxFit.contain,
-                  image: NetworkImage(
-                      'https://pbs.twimg.com/profile_images/1327575747553267713/eRd8dNQ5.jpg'),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              ListTile(
-                title: GestureDetector(
-                  onTap: () async {
-                    await watch(setLoading).getSharedPrefrence() == true
-                        ? Navigator.of(context)
-                            .pushReplacementNamed(mProfileScreen)
-                        : buildShowDialogLogin(context);
-                  },
-                  child: TextComponent(
-                      title: getTranslated(context, "DrawerMyAccount"),
-                      fontSize: 14,
-                      textColor: "000000"),
-                ),
-              ),
-              ListTile(
-                title: GestureDetector(
-                  onTap: () async {
-                    await watch(setLoading).getSharedPrefrence() == true
-                        ? Navigator.of(context).pushReplacementNamed(mAddresses)
-                        : buildShowDialogLogin(context);
-                  },
-                  child: TextComponent(
-                      title: getTranslated(context, "DrawerMyAddresses"),
-                      fontSize: 14,
-                      textColor: "000000"),
-                ),
-              ),
-              ListTile(
-                title: TextComponent(
-                    title: getTranslated(context, "DrawerStoreLocation"),
-                    fontSize: 14,
-                    textColor: "000000"),
-              ),
-              ListTile(
-                title: GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushReplacementNamed(mAboutUs),
-                  child: TextComponent(
-                      title: getTranslated(context, "DrawerAboutUs"),
-                      fontSize: 14,
-                      textColor: "000000"),
-                ),
-              ),
-              ListTile(
-                title: GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushReplacementNamed(mContactUs),
-                  child: TextComponent(
-                      title: getTranslated(context, "DrawerContactUs"),
-                      fontSize: 14,
-                      textColor: "000000"),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Consumer(builder: (context, watch, child) {
-                return GestureDetector(
-                  onTap: () async {
-                    await watch(setLoading).getSharedPrefrence() == true
-                        ? watch(setLoading).logout()
-                        : buildShowDialogLogin(context);
-                  },
-                  child: ListTile(
-                    title: TextComponent(
-                        title: watch(setLoading).getSharedPrefrence() == true
-                            ? getTranslated(context, "DrawerLogout")
-                            : getTranslated(context, "DrawerLogin"),
-                        fontSize: 14,
-                        textColor: "000000"),
-                  ),
-                );
-              }),
-              Consumer(
-                builder: (context, watch, child) => Row(
+      child: View(
+          viewmodel: ProfileViewmodel(),
+          builder: (_, viewmodel, __) => Container(
+                // height: MediaQuery.of(context).size.height,
+                child: ListView(
                   children: [
+                    DrawerHeader(
+                      child: Image(
+                        fit: BoxFit.contain,
+                        image: NetworkImage(
+                            'https://pbs.twimg.com/profile_images/1327575747553267713/eRd8dNQ5.jpg'),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    ListTile(
+                      title: GestureDetector(
+                        onTap: () => {
+                          Navigator.pushReplacementNamed(
+                              context, mProfileScreen)
+                        },
+                        child: TextComponent(
+                            title: getTranslated(context, "DrawerMyAccount"),
+                            fontSize: 14,
+                            textColor: "000000"),
+                      ),
+                    ),
+                    ListTile(
+                      title: GestureDetector(
+                        onTap: () async {},
+                        child: TextComponent(
+                            title: getTranslated(context, "DrawerMyAddresses"),
+                            fontSize: 14,
+                            textColor: "000000"),
+                      ),
+                    ),
+                    ListTile(
+                      title: TextComponent(
+                          title: getTranslated(context, "DrawerStoreLocation"),
+                          fontSize: 14,
+                          textColor: "000000"),
+                    ),
+                    ListTile(
+                      title: GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushReplacementNamed(mAboutUs),
+                        child: TextComponent(
+                            title: getTranslated(context, "DrawerAboutUs"),
+                            fontSize: 14,
+                            textColor: "000000"),
+                      ),
+                    ),
+                    ListTile(
+                      title: GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushReplacementNamed(mContactUs),
+                        child: TextComponent(
+                            title: getTranslated(context, "DrawerContactUs"),
+                            fontSize: 14,
+                            textColor: "000000"),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    GestureDetector(
+                      onTap: () async {},
+                      child: ListTile(
+                        title: TextComponent(
+                            title: getTranslated(context, "DrawerLogin"),
+                            fontSize: 14,
+                            textColor: "000000"),
+                      ),
+                    ),
                     SizedBox(
                       width: 50,
                     ),
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {
-                          watch(uiProvider).changeLanguage(context);
-                        },
+                        onTap: () {},
                         child: RaisedButtonCom(
                           borderColor: "000000",
                           borderWidth: 2,
@@ -264,11 +245,7 @@ class _AppState extends State<App> {
                     ),
                   ],
                 ),
-              )
-            ],
-          ),
-        ),
-      ),
+              )),
     );
   }
 
@@ -342,30 +319,19 @@ class _AppState extends State<App> {
     SvgPicture iconInactive,
     String title,
   }) {
-    return Consumer(
-      builder: (context, watch, child) => InkWell(
-        onTap: () async {
-          await watch(setLoading).getSharedPrefrence() == true ||
-                  index == "0" ||
-                  index == "3"
-              ? setState(() {
-                  widget.currentIndex = index.toString();
-                })
-              : buildShowDialogLogin(context);
-        },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-                child:
-                    widget.currentIndex == index ? iconActive : iconInactive),
-            TextComponent(
-              fontSize: 12,
-              title: title,
-              textColor: widget.currentIndex == index ? 'F26882' : 'C7C7C7',
-            )
-          ],
-        ),
+    return InkWell(
+      onTap: () => setState(() => widget.currentIndex = index),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Container(
+              child: widget.currentIndex == index ? iconActive : iconInactive),
+          TextComponent(
+            fontSize: 12,
+            title: title,
+            textColor: widget.currentIndex == index ? 'F26882' : 'C7C7C7',
+          )
+        ],
       ),
     );
   }

@@ -3,6 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/constants/routes.dart';
+import 'package:munch_app/screens/map_location/map_location_viewmodel.dart';
+import 'package:munch_app/screens/view.dart';
 
 class MapLocation extends StatefulWidget {
   @override
@@ -62,36 +64,40 @@ class MapLocationState extends State<MapLocation> {
     CameraPosition initialLocation =
         CameraPosition(zoom: 16, bearing: 30, target: pinPosition);
 
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.78,
-      width: MediaQuery.of(context).size.width,
-      child: Scaffold(
-        body: GoogleMap(
-          myLocationEnabled: true,
-          compassEnabled: true,
-          zoomControlsEnabled: false,
-          mapType: MapType.normal,
-          markers: _markers,
-          initialCameraPosition: initialLocation,
-          // onMapCreated: _onMapCreated,
-          onCameraMove: setMarker,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          padding: EdgeInsets.only(bottom: 16.0),
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: GestureDetector(
-            onTap: () => Navigator.pushReplacementNamed(context, mCategory),
-            child: RaisedButtonCom(
-              title: "Select",
-              color: "F26882",
-              fontSize: 14,
-              textAlign: TextAlign.center,
-              padding: 10,
-              radius: 10,
-              textColor: "FFFFFF",
-              borderColor: "F26882",
-              borderWidth: 2,
+    return View(
+      viewmodel: MapLocationViewmodel(),
+      builder: (_, viewmodel, __) => Container(
+        height: MediaQuery.of(context).size.height * 0.78,
+        width: MediaQuery.of(context).size.width,
+        child: Scaffold(
+          body: GoogleMap(
+            myLocationEnabled: true,
+            compassEnabled: true,
+            zoomControlsEnabled: false,
+            mapType: MapType.normal,
+            markers: _markers,
+            initialCameraPosition: initialLocation,
+            // onMapCreated: _onMapCreated,
+            onCameraMove: setMarker,
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Container(
+            padding: EdgeInsets.only(bottom: 16.0),
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: GestureDetector(
+              onTap: () => Navigator.pushReplacementNamed(context, mCategory),
+              child: RaisedButtonCom(
+                title: "Select",
+                color: "F26882",
+                fontSize: 14,
+                textAlign: TextAlign.center,
+                padding: 10,
+                radius: 10,
+                textColor: "FFFFFF",
+                borderColor: "F26882",
+                borderWidth: 2,
+              ),
             ),
           ),
         ),
