@@ -3,8 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:munch_app/models/Category.dart';
 import 'package:munch_app/models/product.dart';
 import 'package:munch_app/models/user.dart';
-import 'package:munch_app/providers/user_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DataService {
   Future<List<Category>> fetchCategory() async {

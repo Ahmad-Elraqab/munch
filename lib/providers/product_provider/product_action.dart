@@ -1,33 +1,24 @@
-import 'package:flutter/foundation.dart';
+import 'package:munch_app/models/Category.dart';
 import 'package:munch_app/models/product.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:munch_app/providers/product_provider/product_provider.dart';
 import 'package:munch_app/services/data_service.dart';
-import 'package:riverpod/riverpod.dart';
 
-import '../dependency.dart';
+final categoryProvider = Provider((ref) => DataService());
+final responseProvider = FutureProvider<List<Category>>(
+  (ref) async {
+    final httpClient = ref.read(categoryProvider);
+    return httpClient.fetchCategory();
+  },
+);
 
-class ProductProvider extends ChangeNotifier {
-  List<Product> products;
-  int selectedItem;
-  final data = service<DataService>();
-
-  Future<List<Product>> getProducts() async {
-    products = await data.getProduct();
-
-    return products;
-  }
-
-  Future<Product> getProductDetails() async {
-    final product = await data.getProductDetailsServer(selectedItem);
-
-    return product;
-  }
-
-  Future<List<Product>> getRecommendedProducts() async {
-    final product = await data.getRecommendedProductsServer(1, 76, -1, -1, -1);
-
-    return product;
-  }
-}
+final fetchRecommendedItemsProvider = Provider((ref) => DataService());
+final itemsProvider = FutureProvider<List<Product>>(
+  (ref) async {
+    final httpClient = ref.read(fetchRecommendedItemsProvider);
+    return httpClient.getRecommendedItems();
+  },
+);
 
 final fetchProductProvider = Provider((ref) => ProductProvider());
 final productsProvider = FutureProvider<List<Product>>(

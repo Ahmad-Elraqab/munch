@@ -5,7 +5,7 @@ import 'package:munch_app/models/user.dart';
 import 'package:munch_app/services/data_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../dependency.dart';
+import '../../dependency.dart';
 
 class UserProvider extends ChangeNotifier {
   bool isLoading = false;
@@ -60,13 +60,3 @@ class UserProvider extends ChangeNotifier {
     return prefs.getBool("isAuth");
   }
 }
-
-final userProvider = Provider((ref) => UserProvider());
-final setLoading = ChangeNotifierProvider((ref) => UserProvider());
-
-final loginProvider = FutureProvider.autoDispose.family(
-  (ref, con) async {
-    final httpClient = ref.watch(setLoading);
-    await httpClient.login(con);
-  },
-);

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/constants/routes.dart';
-import 'package:munch_app/providers/future_provider.dart';
-import 'package:munch_app/providers/ui_provider.dart';
+import 'package:munch_app/providers/product_provider/product_action.dart';
 
 class CategoryList extends StatefulWidget {
   @override

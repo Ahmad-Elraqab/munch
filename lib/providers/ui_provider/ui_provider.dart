@@ -39,11 +39,3 @@ class UiProvider with ChangeNotifier {
     AppView.setLocale(context, _temp);
   }
 }
-
-final uiProvider = Provider((ref) => UiProvider());
-final languageProvider = Provider.family(
-  (ref, con) {
-    final httpClient = ref.read(uiProvider);
-    httpClient.changeLanguage(con);
-  },
-);
