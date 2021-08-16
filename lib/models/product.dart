@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:munch_app/models/picture.dart';
 
 class Product {

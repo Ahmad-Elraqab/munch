@@ -1,5 +1,3 @@
-import 'package:munch_app/models/picture.dart';
-
 class Coordinate {
   int id;
   List<String> latitude;

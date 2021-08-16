@@ -7,7 +7,6 @@ import 'package:munch_app/components/raised_button_component.dart';
 import 'package:munch_app/components/text_component.dart';
 import 'package:munch_app/constants/constants.dart';
 import 'package:munch_app/providers/product_provider/product_action.dart';
-import 'package:munch_app/providers/product_provider/product_provider.dart';
 
 class ItemViewScreen extends StatefulWidget {
   @override

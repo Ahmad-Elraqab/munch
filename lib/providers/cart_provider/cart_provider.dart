@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:munch_app/models/product.dart';
-import 'package:riverpod/riverpod.dart';
 
 class CartProvider extends ChangeNotifier {
   Map products;

@@ -111,35 +111,33 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     // final dataService = service<DataService>();
-    return SafeArea(
-      child: Scaffold(
-        key: _scaffoldKey,
-        drawer: MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            child: buildDrawer(context)),
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 70,
-                  ),
-                  MediaQuery(
-                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-                    child: Container(child: callPage(widget.currentIndex)),
-                  ),
-                ],
-              ),
+    return Scaffold(
+      key: _scaffoldKey,
+      drawer: MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: buildDrawer(context)),
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 70,
+                ),
+                MediaQuery(
+                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  child: Container(child: callPage(widget.currentIndex)),
+                ),
+              ],
             ),
-            CustomAppBar(),
-          ],
-        ),
-        bottomNavigationBar: MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            child: _getBottomNav()),
+          ),
+          CustomAppBar(),
+        ],
       ),
+      bottomNavigationBar: MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: _getBottomNav()),
     );
   }
 
@@ -226,6 +224,7 @@ class _AppState extends State<App> {
                   },
                   child: ListTile(
                     title: TextComponent(
+                        // ignore: unrelated_type_equality_checks
                         title: watch(setLoading).getSharedPrefrence() == true
                             ? getTranslated(context, "DrawerLogout")
                             : getTranslated(context, "DrawerLogin"),

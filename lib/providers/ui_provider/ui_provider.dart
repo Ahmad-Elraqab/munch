@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:munch_app/app_view.dart';
 import 'package:munch_app/dependency.dart';
 import 'package:munch_app/models/language.dart';

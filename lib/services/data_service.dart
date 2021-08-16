@@ -66,6 +66,7 @@ class DataService {
 
   Future<Product> getProductDetailsServer(int id) async {
     final data = await http.get(
+        // ignore: unnecessary_brace_in_string_interps
         'https://api.munchbakery.com/MunchBakeryAPIService.svc/GetMunchBakeryProductDetails/${id}/1');
 
     final jsonData = jsonDecode(data.body);

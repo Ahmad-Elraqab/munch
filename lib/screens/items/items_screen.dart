@@ -204,6 +204,7 @@ class RrestaurantStatesList extends State<ItemScreen> {
                 ),
                 Consumer(
                   builder: (context, watch, child) {
+                    // ignore: unused_local_variable
                     final data = watch(cartProvider);
                     return GestureDetector(
                       onTap: () => {},
