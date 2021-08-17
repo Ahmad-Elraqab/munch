@@ -82,7 +82,6 @@ class RrestaurantStatesList extends State<ItemScreen> {
                               onTap: () => buildShowDialog(context),
                               child: RaisedButtonCom(
                                 width: MediaQuery.of(context).size.width * 0.35,
-                                height: 35,
                                 borderColor: "000000",
                                 color: "FFFFFF",
                                 fontSize: 14,

@@ -78,7 +78,7 @@ class _CartScreenState extends State<CartScreen> {
                       padding: EdgeInsets.only(top: 12.0, bottom: 12.0),
                       child: ListTile(
                         leading: CircleAvatar(
-                          maxRadius: 40,
+                          maxRadius: 30,
                           backgroundColor: Colors.transparent,
                           child: Image(
                             image: NetworkImage(
@@ -230,7 +230,6 @@ class _CartScreenState extends State<CartScreen> {
                                                   .size
                                                   .width *
                                               0.35,
-                                          height: 35,
                                           borderColor: "000000",
                                           color: "FFFFFF",
                                           fontSize: 14,

@@ -70,7 +70,6 @@ class _CategoryListState extends State<CategoryList> {
                                 {Navigator.pushNamed(context, mItemScreen)},
                             child: RaisedButtonCom(
                               width: MediaQuery.of(context).size.width * 0.35,
-                              height: 35,
                               borderColor: "000000",
                               color: "FFFFFF",
                               fontSize: 14,
